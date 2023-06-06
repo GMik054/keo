@@ -20,7 +20,7 @@ useEffect(()=>{
 
 
         // console.log(e.nextSelectedPage + 1)
-        fetch(`${productData?.path}?page=${e?.nextSelectedPage + 1}&json=true`, {
+        fetch(`https://backendkoa.fast-cybers.com/api/product-categories/video-surveillance?page=2&json=true`, {
             method: 'GET',
             headers: {
                 "Access-Control-Allow-Origin": "*",
