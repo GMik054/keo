@@ -15,6 +15,8 @@ import VegetableNav from "../../VegetablesDemo/VegetableHomeSlider/VegetableNav"
 //     MOUSE_ACTIVATION,
 //     TOUCH_ACTIVATION
 // } from "react-image-magnifiers";
+import $ from 'jquery';
+import ImageZoom from "../ZoomEffect";
 
 const AutoFadeSlider = ({VideoPlay, singleProduct}) => {
     // console.log(singleProduct)
@@ -32,15 +34,79 @@ const AutoFadeSlider = ({VideoPlay, singleProduct}) => {
 
     const [image, setImage] = useState(singleProduct?.map(e => e.images[0].src))
 
-    const [isZoomed, setIsZoomed] = useState(false);
+    // var mainContainer = document.querySelector("#picture");
+    // var rect = document.querySelector("#rect");
+    // var zoom = document.querySelector("#zoom");
+    //
+    // let w1 = mainContainer.offsetWidth;
+    // let h1 = mainContainer.offsetHeight;
+    //
+    // let ratio = 3;
+    //
+    // zoom.style.backgroundSize = w1 * ratio + 'px ' + h1 * ratio + 'px';
+    //
+    // let x, y, xx, yy;
+    //
+    // let w2 = rect.offsetWidth
+    // let h2 = mainContainer.offsetHeight;
+    //
+    // zoom.style.width = w2 * ratio + 'px';
+    // zoom.style.height = h2 * ratio + 'px';
+    //
+    // w2 = w2 / 2;
+    // h2 = h2 / 2;
+    //
+    // function move(event) {
+    //     x = event.offsetX;
+    //     y = event.offsetY;
+    //     xx = x - w2;
+    //     yy = y - h2;
+    //
+    //     if (x < w2) {
+    //         x = w2;
+    //         xx = 0;
+    //     }
+    //     if (x > w1 - w2) {
+    //         x = w1 - w2;
+    //         xx = x - w2;
+    //     }
+    //     if (y < h2) {
+    //         y = h2;
+    //         yy = 0;
+    //     }
+    //     if (y > h1 - h2) {
+    //         y = h1 - h2;
+    //     }
+    //
+    //     xx = xx * ratio;
+    //     yy = yy * ratio;
+    //     rect.style.left = x + 'px';
+    //     rect.style.top = y + 'px';
+    //
+    //     zoom.style.backgroundPosition = '-' + xx + 'px ' + '-' + yy + 'px'
+    // }
+    //
+    // mainContainer.addEventListener('mousemove', function () {
+    //     move(event);
+    //     addOpacity()
+    // })
+    //
+    // function addOpacity() {
+    //     rect.classList.add("rect-active");
+    //     zoom.classList.add("rect-active")
+    // }
+    //
+    // function removeOpacity() {
+    //     zoom.classList.remove("rect-active")
+    // }
+    //
+    // mainContainer.addEventListener('mouseout', function () {
+    //     removeOpacity()
+    // })
 
-    const handleMouseEnter = () => {
-        setIsZoomed(true);
-    };
+    const imgContainerRef = useRef(null);
 
-    const handleMouseLeave = () => {
-        setIsZoomed(false);
-    };
+
 
     return (
         <div className='degree-section'>
@@ -61,6 +127,16 @@ const AutoFadeSlider = ({VideoPlay, singleProduct}) => {
                 {/*        height: 1800*/}
                 {/*    }*/}
                 {/*}} />*/}
+
+
+               <ImageZoom imageUrl={`${CommonPath}/empty-compare.png`}/>
+
+                {/*<div className="picture" id="picture">*/}
+                {/*    <div className="rect" id="rect"></div>*/}
+                {/*    <img id="pic" src={`${CommonPath}/empty-compare.png`} style={{width: "100%"}}/>*/}
+                {/*</div>*/}
+                {/*<div className="zoom" id="zoom" style={{backgroundImage: `url(${CommonPath}/empty-compare.png)`}}></div>*/}
+
 
                 {/*<MagnifierContainer style={{width: "100%", height: "100%"}}>*/}
                 {/*    <div className="example-class image-magnify">*/}

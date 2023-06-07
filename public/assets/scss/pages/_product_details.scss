@@ -668,19 +668,73 @@
 
 .zoom-container {
   position: relative;
-  overflow: hidden;
-}
-
-.zoomed {
-  z-index: 999;
+  display: inline-block;
 }
 
 .zoom-image {
-  display: block;
-  width: 100%;
+  max-width: 100%;
   height: auto;
+  cursor: pointer;
+
 }
 
+.zoom-window {
+  position: absolute;
+  left: 188%;
+  top: 100%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  background-color: white;
+  z-index: 199;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 6px 8px 2px;
+  border: 1px solid rgb(148, 148, 148);
+  width: 800px; /* Adjust the width as needed */
+  height: 500px; /* Adjust the height as needed */
+  display: block;
+  background-size: 200% 200%; /* Adjust the background-size as needed */
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.zoom-container:hover .zoom-window {
+  opacity: 1;
+}
+
+.zoom-rect {
+  position: absolute;
+    width: 200px;
+    height: 125px;
+  //border: 2px solid red; /* Adjust the border color and thickness as needed */
+  background-image: url(https://m.media-amazon.com/images/G/01/apparel/rcxgs/tile._CB483369110_.gif);
+  pointer-events: none;
+}
+
+//
+//.rect {
+//  position: absolute;
+//  margin: 0;
+//  padding: 0;
+//  width: 200px;
+//  height: 150px;
+//  background-color: #78787c4d;
+//  transform: translate(-50%, -50%);
+//  pointer-events: none;
+//  opacity: 0;
+//}
+//
+//
+//.zoom {
+//  position: relative;
+//  top: 100px;
+//  left: 20px;
+//  box-shadow: 5px 5px 5px rgb(24, 24, 24);
+//  opacity: 0;
+//}
+//
+//.rect-active {
+//  opacity: 1;
+//}
 
 .details-items {
   .color-image {
