@@ -62,15 +62,15 @@ const AutoFadeSlider = ({VideoPlay, singleProduct}) => {
                 {/*    }*/}
                 {/*}} />*/}
 
-                <MagnifierContainer style={{width: "100%", height: "100%"}}>
-                    <div className="example-class image-magnify">
-                        <MagnifierPreview imageSrc={`${CommonPath}/empty-compare.png`}/>
-                        <MagnifierZoom
-                            style={{width: "700px", height: "400px", top: "-400px", left: "100%",zIndex: "999", marginLeft:"20px"}}
-                            imageSrc={`${CommonPath}/empty-compare.png`}/>
-                    </div>
+                {/*<MagnifierContainer style={{width: "100%", height: "100%"}}>*/}
+                {/*    <div className="example-class image-magnify">*/}
+                {/*        <MagnifierPreview imageSrc={`${CommonPath}/empty-compare.png`}/>*/}
+                {/*        <MagnifierZoom*/}
+                {/*            style={{width: "700px", height: "400px", top: "-400px", left: "100%",zIndex: "999", marginLeft:"20px"}}*/}
+                {/*            imageSrc={`${CommonPath}/empty-compare.png`}/>*/}
+                {/*    </div>*/}
 
-                </MagnifierContainer>
+                {/*</MagnifierContainer>*/}
 
 
                 {/*<ReactZoomPanPinch*/}
