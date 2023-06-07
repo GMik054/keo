@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { Btn } from '../../AbstractElements';
-import { Areyousuretodelete, YesDeleteaccount } from '../../Constant';
+import { Areyousuretodelete  } from '../../Constant';
 const DeleteModal = () => {
   const dispatch = useDispatch();
   const { isDelete } = useSelector((state) => state.ModalReducer);
@@ -21,7 +21,7 @@ const DeleteModal = () => {
           <h4>{Areyousuretodelete}</h4>
         </ModalBody>
         <ModalFooter className='d-block text-center mb-4'>
-          <Btn attrBtn={{ className: 'btn btn-solid-default btn-sm fw-bold rounded', onClick: RedirectModal }}>{YesDeleteaccount}</Btn>
+          <Btn attrBtn={{ className: 'btn btn-solid-default btn-sm fw-bold rounded', onClick: RedirectModal }}>"Yes"</Btn>
         </ModalFooter>
       </Modal>
     </>
