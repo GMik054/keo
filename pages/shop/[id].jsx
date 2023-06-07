@@ -54,7 +54,7 @@ const ShopLeftSidebar = ({data}) => {
 
 export async function getServerSideProps({params}) {
     const mainMenu = await fetch(`${APICallUrl}/api/main-menu?slug=main-menu`);
-    const categoriesData = await fetch(`${APICallUrl}/shop/${params.id}?json=true`);
+    const categoriesData = await fetch(`${APICallUrl}/shop/${params?.id}?json=true`);
     const specialOffer = await fetch(`${APICallUrl}/api/get-products-with-categories-by-collection?collection=special-offer`);
     const footerLeft = await fetch(`${APICallUrl}/api/main-menu?slug=footer`);
     const footerCenter = await fetch(`${APICallUrl}/api/main-menu?slug=categories`);
