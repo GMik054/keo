@@ -30,7 +30,7 @@ const Shop = ({data}) => {
     );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const mainMenu = await fetch(`${APICallUrl}/api/main-menu?slug=main-menu`);
     const categories = await fetch(`${APICallUrl}/api/categories`);
     const brands = await fetch(`${APICallUrl}/api/brands?per_page=13&page=1&is_featured=true`);
