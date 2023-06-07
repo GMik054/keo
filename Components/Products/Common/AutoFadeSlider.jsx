@@ -7,14 +7,14 @@ import VegetableNav from "../../VegetablesDemo/VegetableHomeSlider/VegetableNav"
 // import ReactImageMagnify from 'react-image-magnify';
 // import ReactImageZoom from "react-image-zoom/src/react-image-zoom";
 // import { ReactZoomPanPinch } from 'react-zoom-pan-pinch';
-import {
-    Magnifier,
-    MagnifierContainer,
-    MagnifierPreview,
-    MagnifierZoom,
-    MOUSE_ACTIVATION,
-    TOUCH_ACTIVATION
-} from "react-image-magnifiers";
+// import {
+//     Magnifier,
+//     MagnifierContainer,
+//     MagnifierPreview,
+//     MagnifierZoom,
+//     MOUSE_ACTIVATION,
+//     TOUCH_ACTIVATION
+// } from "react-image-magnifiers";
 
 const AutoFadeSlider = ({VideoPlay, singleProduct}) => {
     // console.log(singleProduct)
