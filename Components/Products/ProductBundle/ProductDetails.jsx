@@ -20,7 +20,7 @@ const ProductDetails = ({bundles, singleProduct}) => {
                 <h2>{singleProduct && singleProduct[0]?.name}</h2>
             </div>
             <div style={{display:"flex"}}>
-            <DynamicRating data={singleProduct[0]?.ratingStars} customeclass={"mb-3"}/>
+            {/*<DynamicRating data={singleProduct[0]?.ratingStars} customeclass={"mb-3"}/>*/}
             <span style={{marginLeft:"2px"}}>(12 reviews)</span>
             </div>
 

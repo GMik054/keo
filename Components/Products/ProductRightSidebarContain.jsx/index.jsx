@@ -14,7 +14,7 @@ const ProductRightSidebarContain = ({productData}) => {
     const router = useRouter();
     const {id} = router.query;
     const [singleProduct, setSingleProduct] = useState([]);
-    const FilterVrProduct = productData.filter((el) => el.type === "electronic")
+    // const FilterVrProduct = productData.filter((el) => el.type === "electronic")
 
     useEffect(() => {
         const types = ['product'];

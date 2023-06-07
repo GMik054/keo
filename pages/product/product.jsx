@@ -30,7 +30,8 @@ const ProductRightSidebar = () => {
             });
         });
     }, []);
-    const paddingBottom = "0"
+    const paddingBottom = "0";
+    console.log(productData)
     return (
         <Layout6>
             <Head>
@@ -50,7 +51,7 @@ const ProductRightSidebar = () => {
             {/*<ElectronicHurryUp tabSection={tabSection}/>*/}
 
             <FlowerSubscribe/>
-            <RecentNotification/>
+            {/*<RecentNotification/>*/}
             <StickyFooter productData={productData}/>
         </Layout6>
     );

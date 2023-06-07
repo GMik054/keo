@@ -4,9 +4,20 @@ import Slider from 'react-slick';
 import {AutoFadeSliderNavData, AutoFadeSliderPosterData} from '../../../Data/SliderSettingsData';
 import {CommonPath} from '../../Constant';
 import VegetableNav from "../../VegetablesDemo/VegetableHomeSlider/VegetableNav";
-import ReactImageMagnify from 'react-image-magnify';
+// import ReactImageMagnify from 'react-image-magnify';
+// import ReactImageZoom from "react-image-zoom/src/react-image-zoom";
+// import { ReactZoomPanPinch } from 'react-zoom-pan-pinch';
+import {
+    Magnifier,
+    MagnifierContainer,
+    MagnifierPreview,
+    MagnifierZoom,
+    MOUSE_ACTIVATION,
+    TOUCH_ACTIVATION
+} from "react-image-magnifiers";
 
 const AutoFadeSlider = ({VideoPlay, singleProduct}) => {
+    // console.log(singleProduct)
     const [state, setState] = useState({nav1: null, nav2: null});
     const slider1 = useRef();
     const slider2 = useRef();
@@ -19,29 +30,60 @@ const AutoFadeSlider = ({VideoPlay, singleProduct}) => {
     }, []);
     const {nav1, nav2} = state;
 
-    const [image, setImage] = useState(singleProduct.map(e => e.images[0].src))
-    console.log(image)
+    const [image, setImage] = useState(singleProduct?.map(e => e.images[0].src))
+
+    const [isZoomed, setIsZoomed] = useState(false);
+
+    const handleMouseEnter = () => {
+        setIsZoomed(true);
+    };
+
+    const handleMouseLeave = () => {
+        setIsZoomed(false);
+    };
 
     return (
         <div className='degree-section'>
 
             <div className='details-image ratio_asos'>
-                <ReactImageMagnify className="image-magnify" style={{zIndex: "999"}}
-                                   enlargedImageContainerDimensions={{width: '170%', height: '140%'}}
-                                   imageStyle={{maxWidth: "604px", maxHeight: "462px"}} {...{
-                    smallImage: {
-                        alt: 'Wristwatch by Ted Baker London',
-                        isFluidWidth: true,
-                        src: `${CommonPath}/${image}`,
-                    },
+                {/*<ReactImageMagnify className="image-magnify" style={{zIndex: "999"}}*/}
+                {/*                   enlargedImageContainerDimensions={{width: '170%', height: '140%'}}*/}
+                {/*                   imageStyle={{maxWidth: "604px", maxHeight: "462px"}} {...{*/}
+                {/*    smallImage: {*/}
+                {/*        alt: 'Wristwatch by Ted Baker London',*/}
+                {/*        isFluidWidth: true,*/}
+                {/*        src: `${CommonPath}/empty-compare.png`,*/}
+                {/*    },*/}
 
-                    largeImage: {
-                        src: `${CommonPath}/${image}`,
-                        width: 1200,
-                        height: 1800
-                    }
-                }} />
+                {/*    largeImage: {*/}
+                {/*        src: `${CommonPath}/empty-compare.png`,*/}
+                {/*        width: 1200,*/}
+                {/*        height: 1800*/}
+                {/*    }*/}
+                {/*}} />*/}
 
+                <MagnifierContainer style={{width: "100%", height: "100%"}}>
+                    <div className="example-class image-magnify">
+                        <MagnifierPreview imageSrc={`${CommonPath}/empty-compare.png`}/>
+                        <MagnifierZoom
+                            style={{width: "700px", height: "400px", top: "-400px", left: "100%",zIndex: "999", marginLeft:"20px"}}
+                            imageSrc={`${CommonPath}/empty-compare.png`}/>
+                    </div>
+
+                </MagnifierContainer>
+
+
+                {/*<ReactZoomPanPinch*/}
+                {/*    className="zoom-container"*/}
+                {/*    zoomButtons={false}*/}
+                {/*    enablePan={false}*/}
+                {/*    minZoom={1}*/}
+                {/*    maxZoom={5}*/}
+                {/*>*/}
+                {/*    <img src={`${CommonPath}/empty-compare.png`} alt="Image" className="image-class" />*/}
+                {/*</ReactZoomPanPinch>*/}
+
+                {/*<ZoomEffect smallImageUrl={`${CommonPath}/empty-compare.png`}  largeImageUrl={`${CommonPath}/empty-compare.png`}/>*/}
                 {/*<Slider {...AutoFadeSliderPosterData} asNavFor={nav1} ref={(slider) => (slider2.current = slider)}>*/}
                 {/*    {singleProduct &&*/}
                 {/*        singleProduct.map((item) => {*/}

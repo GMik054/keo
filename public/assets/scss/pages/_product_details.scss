@@ -665,6 +665,23 @@
 
 }
 
+
+.zoom-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.zoomed {
+  z-index: 999;
+}
+
+.zoom-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
 .details-items {
   .color-image {
     margin: 20px 0;

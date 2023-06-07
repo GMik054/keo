@@ -15,7 +15,7 @@ const SearchForVegitable = () => {
       setProductData(res?.data);
     });
   }, []);
-  const FilteredData = productData.filter((el) => el.name.toLowerCase().includes(onInputText.toLowerCase()));
+  const FilteredData = productData?.filter((el) => el.name.toLowerCase().includes(onInputText.toLowerCase()));
   const handleChange = (e) => {
     setOnInputText(e.target.value);
     dispatch({ type: 'IS_FOCUS', payload: true });

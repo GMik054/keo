@@ -20,14 +20,7 @@ useEffect(()=>{
 
 
         // console.log(e.nextSelectedPage + 1)
-        fetch(`https://backendkoa.fast-cybers.com/api/product-categories/video-surveillance?page=2&json=true`, {
-            method: 'GET',
-            headers: {
-                "Access-Control-Allow-Origin": "*",
-                "Content-Type": "application/json;charset=UTF-8"
-            },
-
-        }).then(res => res.json().then(res => {
+        fetch(`https://backendkoa.fast-cybers.com/shop/video-surveillance?page=2&json=true`).then(res => res.json().then(res => {
                 console.log(res,"res")
             }
         ));
@@ -61,7 +54,7 @@ useEffect(()=>{
             {/*</Pagination>*/}
 
             <ReactPaginate
-                pageCount={productData.last_page}
+                pageCount={productData?.last_page}
                 breakLabel="..."
                 nextLabel=">"
                 previousLabel="<"
