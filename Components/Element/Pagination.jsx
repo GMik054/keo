@@ -29,7 +29,7 @@ const PaginationComp = ({productData, addClass}) => {
     let [r, setR] = useState(false)
 
     useEffect(() => {
-        console.log(`${productData.path}?json=true&per_page=12&page=${router?.query?.page}${typeof router?.query["brands[]"] === 'string' ? `&brands%5B%5D=${Number(router?.query["brands[]"])}` : router?.query?.["brands[]"].map(el => `&brands%5B%5D=${Number(el)}`).join('')}${router?.query?.min_price && `&min_price=${Number(router?.query?.min_price)}`}${router?.query?.max_price && `&max_price=${Number(router?.query?.max_price)}`}`)
+        // console.log(`${productData.path}?json=true&per_page=12&page=${router?.query?.page}${typeof router?.query["brands[]"] === 'string' ? `&brands%5B%5D=${Number(router?.query["brands[]"])}` : router?.query?.["brands[]"].map(el => `&brands%5B%5D=${Number(el)}`).join('')}${router?.query?.min_price && `&min_price=${Number(router?.query?.min_price)}`}${router?.query?.max_price && `&max_price=${Number(router?.query?.max_price)}`}`)
         if (Number(router?.query?.page) > 1 || Object.keys(router?.query).length > 3) {
             fetch(`${productData.path}?json=true&per_page=12&page=${router?.query?.page}${typeof router?.query["brands[]"] === 'string' ? `&brands%5B%5D=${Number(router?.query["brands[]"])}` : router?.query?.["brands[]"].map(el => `&brands%5B%5D=${Number(el)}`).join('')}${router?.query?.min_price && `&min_price=${Number(router?.query?.min_price)}`}${router?.query?.max_price && `&max_price=${Number(router?.query?.max_price)}`}`)
                 .then(res => res.json().then(res => {

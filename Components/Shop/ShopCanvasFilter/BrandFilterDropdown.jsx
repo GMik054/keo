@@ -1,30 +1,27 @@
-import {useRouter} from 'next/router';
-import React, {Fragment, useEffect, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {AccordionBody, AccordionHeader, AccordionItem, Input, Label} from 'reactstrap';
-import {Brand} from '../../Constant';
-import {setFilterBrands} from "../../../ReduxToolkit/Slices/ShopProductsSlice";
+import { useRouter } from 'next/router';
+import React, { Fragment, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { AccordionBody, AccordionHeader, AccordionItem, Input, Label } from 'reactstrap';
+import { Brand } from '../../Constant';
+import { setFilterBrands } from "../../../ReduxToolkit/Slices/ShopProductsSlice";
 
-const BrandFilterDropdown = ({productData}) => {
-
+const BrandFilterDropdown = ({ productData }) => {
     const [brandsArray, setBrandsArray] = useState([]);
     const router = useRouter();
     const dispatch = useDispatch();
 
-
     useEffect(() => {
-        dispatch(setFilterBrands(brandsArray.map(el => `&brands%5B%5D=${el.id}`)))
-    }, [brandsArray])
+        dispatch(setFilterBrands(brandsArray.map(el => `&brands%5B%5D=${el.id}`)));
+    }, [brandsArray]);
 
     useEffect(() => {
         if (typeof router?.query["brands[]"] === 'string') {
-            addBrand({id: Number(router?.query["brands[]"])})
-        } else {
+            addBrand({ id: Number(router?.query["brands[]"]) });
+        } else if (router?.query?.["brands[]"]) {
             router?.query["brands[]"].map(el => {
-                addBrand({id: Number(el)})
+                addBrand({ id: Number(el) });
             });
         }
-
     }, []);
 
     const addBrand = (elem) => {
@@ -35,7 +32,6 @@ const BrandFilterDropdown = ({productData}) => {
         }
     };
 
-
     return (
         <AccordionItem className='category-rating'>
             <AccordionHeader targetId='1'>{Brand}</AccordionHeader>
@@ -43,7 +39,6 @@ const BrandFilterDropdown = ({productData}) => {
                 <ul className='category-list'>
                     {productData &&
                         productData.map((elem, i) => {
-                            // console.log(elem, "elem")
                             const isChecked = brandsArray?.some((brand) => brand?.id === elem?.id);
                             return (
                                 <Fragment key={i}>
@@ -53,23 +48,14 @@ const BrandFilterDropdown = ({productData}) => {
                                                 <Input
                                                     className='checkbox_animated check-it'
                                                     type='checkbox'
-                                                    // id={elem} defaultValue={elem}
                                                     checked={isChecked}
-                                                    // onChange={(e) => addBrand(e)}
-                                                    onClick={() => addBrand(elem)}
+                                                    onChange={() => addBrand(elem)}
                                                 />
-                                                <Label className='form-check-label'
-                                                    // htmlFor={elem}
-                                                >
+                                                <Label className='form-check-label'>
                                                     {elem.name}
                                                 </Label>
                                                 <p className='font-light'>
                                                     ({elem?.products_count})
-                                                    {/*{productData.map((product, i) => {*/}
-                                                    {/*  product?.brand == elem && count++;*/}
-                                                    {/*  count = '';*/}
-                                                    {/*  return productData.length == i + 1 ? count : '';*/}
-                                                    {/*})}*/}
                                                 </p>
                                             </div>
                                         </li>

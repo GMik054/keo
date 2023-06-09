@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {AccordionBody, AccordionHeader, AccordionItem, Label} from 'reactstrap';
 import {Category} from '../../Constant';
 
-const CategoryFilter = ({productData,index}) => {
+const CategoryFilter = ({productData, index}) => {
     // const [allCategory, setAllCategory] = useState(['All']);
     // const { category } = useSelector((state) => state.ProductFilter);
     // const dispatch = useDispatch();
@@ -15,10 +15,10 @@ const CategoryFilter = ({productData,index}) => {
     // };
     return (
         <AccordionItem className='category-rating'>
-                        <AccordionHeader  id="headingOne" targetId={index+5}>
-                            {productData?.title}
-                        </AccordionHeader>
-            <AccordionBody accordionId={index+5} className='category-scroll'>
+            <AccordionHeader id={`headingOne ${index}`} targetId={(index + 5).toString()}>
+                {productData?.title}
+            </AccordionHeader>
+            <AccordionBody accordionId={(index + 5).toString()} className='category-scroll'>
                 <ul className='category-list'>
                     {productData &&
                         productData.attributes.map((elem, i) => {

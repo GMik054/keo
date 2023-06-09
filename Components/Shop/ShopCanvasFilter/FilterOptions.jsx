@@ -25,7 +25,7 @@ const FilterOptions = ({productData}) => {
                 {
                     productData?.attributes.filter(el => el.title !== "Color").map((el,i) => {
                         return (
-                            <CategoryFilter productData={el} index={i}/>
+                            <CategoryFilter productData={el} index={i} key={i}/>
                         )
 
                     })
