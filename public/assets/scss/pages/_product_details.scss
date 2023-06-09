@@ -673,25 +673,26 @@
 
 .zoom-image {
   max-width: 100%;
-  height: auto;
+  //height: auto;
+  max-height: 100%;
   cursor: pointer;
 
 }
 
 .zoom-window {
   position: absolute;
-  left: 188%;
-  top: 100%;
-  transform: translate(-50%, -50%);
+  left: 104%;
+  top: 0;
+  //transform: translate(-50%, -50%);
   overflow: hidden;
   background-color: white;
-  z-index: 199;
+  z-index: 5;
   box-shadow: rgba(0, 0, 0, 0.25) 0 6px 8px 2px;
   border: 1px solid rgb(148, 148, 148);
   width: 800px; /* Adjust the width as needed */
   height: 500px; /* Adjust the height as needed */
   display: block;
-  background-size: 200% 200%; /* Adjust the background-size as needed */
+  background-size: 200%; /* Adjust the background-size as needed */
   background-repeat: no-repeat;
   background-position: center center;
   transition: opacity 0.3s ease-in-out;
@@ -703,8 +704,8 @@
 
 .zoom-rect {
   position: absolute;
-    width: 200px;
-    height: 125px;
+  width: 200px;
+  height: 125px;
   //border: 2px solid red; /* Adjust the border color and thickness as needed */
   background-image: url(https://m.media-amazon.com/images/G/01/apparel/rcxgs/tile._CB483369110_.gif);
   pointer-events: none;
@@ -788,7 +789,7 @@
     justify-content: center;
     max-width: 606px;
     width: 100%;
-    height: 464px;
+    //height: 464px;
     border: 1px solid $light-blue;
 
 

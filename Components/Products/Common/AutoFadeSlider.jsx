@@ -129,7 +129,7 @@ const AutoFadeSlider = ({VideoPlay, singleProduct}) => {
                 {/*}} />*/}
 
 
-               <ImageZoom imageUrl={`${CommonPath}/empty-compare.png`}/>
+               <ImageZoom imageUrl={`${CommonPath}/fashion/noho2.png`}/>
 
                 {/*<div className="picture" id="picture">*/}
                 {/*    <div className="rect" id="rect"></div>*/}

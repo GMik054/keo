@@ -24,7 +24,7 @@ const Brands = ({data}) => {
     );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const mainMenu = await fetch(`${APICallUrl}/api/main-menu?slug=main-menu`);
     const brands = await fetch(`${APICallUrl}/api/brands`);
     const specialOffer = await fetch(`${APICallUrl}/api/get-products-with-categories-by-collection?collection=special-offer`);

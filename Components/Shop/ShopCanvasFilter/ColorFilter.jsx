@@ -4,12 +4,20 @@ import {AccordionBody, AccordionHeader, AccordionItem} from 'reactstrap';
 import {Color} from '../../Constant';
 
 const ColorFilter = ({productData}) => {
-    const dispatch = useDispatch();
-    const {color} = useSelector((state) => state.ProductFilter);
+    // const dispatch = useDispatch();
+    // const {color} = useSelector((state) => state.ProductFilter);
     const [colorArray, setColorArray] = useState([]);
-    useEffect(() => {
+    // useEffect(() => {
         // productData?.map((el) => setColorArray((prev) => Array.from(new Set([...prev, ...el?.colors]))));
-    }, [productData]);
+    // }, [productData]);
+
+    const addColor = (elem) => {
+        if (colorArray.includes(elem)) {
+            setColorArray((prev) => prev.filter((color) => color !== elem));
+        } else {
+            setColorArray((prev) => [...prev, elem]);
+        }
+    };
     return (
         <AccordionItem className='category-color'>
             <AccordionHeader targetId='2'>{Color}</AccordionHeader>
@@ -17,14 +25,23 @@ const ColorFilter = ({productData}) => {
                  data-bs-parent='#accordionExample'>
                 <AccordionBody accordionId='2'>
                     <ul className='category-list'>
-                        {/*{colorArray?.map((elem, i) => (*/}
-                        {/*    <li className={`${color?.includes(elem) ? 'active' : ''}`} key={i}>*/}
-                        {/*        <a href='#javascript' style={{background: elem}}*/}
-                        {/*           onClick={() => dispatch({type: 'COLORFILTER', payload: elem})}>*/}
-                        {/*            <i className='fas fa-check'></i>*/}
-                        {/*        </a>*/}
-                        {/*    </li>*/}
-                        {/*))}*/}
+                        {productData?.attributes?.map((elem, i) => {
+                                // console.log(elem,"elem")
+                                return (
+
+                                    <li
+                                        className={`${colorArray?.includes(elem) ? 'active' : ''}`}
+                                        key={i}>
+                                        <a style={{background: elem.color}}
+                                            // onClick={() => dispatch({type: 'COLORFILTER', payload: elem})}
+                                           onClick={() => addColor(elem)}
+                                        >
+                                            <i className='fas fa-check'></i>
+                                        </a>
+                                    </li>
+                                )
+                            }
+                        )}
                     </ul>
                 </AccordionBody>
             </div>

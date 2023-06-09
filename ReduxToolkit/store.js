@@ -22,20 +22,20 @@ import {
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import {LoginTokenSlice} from "./Slices/LoginSlice";
-
+import {ShopProductsSlice} from "./Slices/ShopProductsSlice";
 
 
 const rootReducer = combineReducers({
     HeaderScroll, ModalReducer, AddToCartReducer, BlogReducer, PortfolioReducer,
     AllGridReducer, ProductFilter, CommonReducer, CurrencyReducer, CompareReducer, ThemeCustomizerReducer,
-    LoginTokenSlice:LoginTokenSlice.reducer
+    LoginTokenSlice: LoginTokenSlice.reducer, ShopProductsSlice: ShopProductsSlice.reducer
 })
 
 const persistConfig = {
     key: 'root',
     storage,
     blacklist: ["HeaderScroll", "ModalReducer", "AddToCartReducer", "BlogReducer", "PortfolioReducer",
-        "AllGridReducer", "ProductFilter", "CommonReducer", "CurrencyReducer", "CompareReducer", "ThemeCustomizerReducer"]
+        "AllGridReducer", "ProductFilter", "CommonReducer", "CurrencyReducer", "CompareReducer", "ThemeCustomizerReducer","ShopProductsSlice"]
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

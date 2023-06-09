@@ -1,60 +1,103 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Pagination, PaginationItem, PaginationLink} from 'reactstrap';
 import ReactPaginate from "react-paginate";
 import {APICallUrl} from "../Constant";
 import {setAuth, setLoginToken, setUser} from "../../ReduxToolkit/Slices/LoginSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {
+    selectFilterBrands, selectPriceRange, selectPriceRangeMax, selectPriceRangeMin, selectShopProducts,
+    setShopCategory,
+    setShopFilters,
+    setShopProducts
+} from "../../ReduxToolkit/Slices/ShopProductsSlice";
+import {useRouter} from "next/router";
+import {useSearchParams} from "next/navigation";
 
-const PaginationComp = ({StoreProductLength, productData,dataPerPage, currentPage, addClass}) => {
+const PaginationComp = ({productData, addClass}) => {
 
+    let [selectPage, setSelectPage] = useState(1);
+    let dispatch = useDispatch();
+    let filterBrands = useSelector(selectFilterBrands);
+    let priceRange = useSelector(selectPriceRange);
+    const router = useRouter();
 
-    // const pageNumber = [];
-    //
-    // for (let i = 1; i <= StoreProductLength; i++) {
-    //     pageNumber.push(i);
-    // }
-    console.log(productData)
-useEffect(()=>{
-
-})
-    let paginate = (e) => {
-
-
-        // console.log(e.nextSelectedPage + 1)
-        fetch(`https://backendkoa.fast-cybers.com/shop/video-surveillance?page=2&json=true`).then(res => res.json().then(res => {
-                console.log(res,"res")
-            }
-        ));
+    // console.log(router,"ro")
+    function pushStateData(el) {
+        window.history.pushState(el, router?.query?.id, `${router?.query?.id}?${el}`);
     }
+
+    let [r, setR] = useState(false)
+
+    useEffect(() => {
+        console.log(`${productData.path}?json=true&per_page=12&page=${router?.query?.page}${typeof router?.query["brands[]"] === 'string' ? `&brands%5B%5D=${Number(router?.query["brands[]"])}` : router?.query?.["brands[]"].map(el => `&brands%5B%5D=${Number(el)}`).join('')}${router?.query?.min_price && `&min_price=${Number(router?.query?.min_price)}`}${router?.query?.max_price && `&max_price=${Number(router?.query?.max_price)}`}`)
+        if (Number(router?.query?.page) > 1 || Object.keys(router?.query).length > 3) {
+            fetch(`${productData.path}?json=true&per_page=12&page=${router?.query?.page}${typeof router?.query["brands[]"] === 'string' ? `&brands%5B%5D=${Number(router?.query["brands[]"])}` : router?.query?.["brands[]"].map(el => `&brands%5B%5D=${Number(el)}`).join('')}${router?.query?.min_price && `&min_price=${Number(router?.query?.min_price)}`}${router?.query?.max_price && `&max_price=${Number(router?.query?.max_price)}`}`)
+                .then(res => res.json().then(res => {
+                        setSelectPage(res.products.current_page)
+                        dispatch(setShopProducts(res.products))
+                    }
+                ));
+        }
+    }, []);
+
+    useEffect(() => {
+        fetch(`${productData?.path}?json=true&per_page=12&page=${selectPage}${filterBrands?.join('')}${priceRange?.join('')}`)
+            .then(res => res.json().then(res => {
+                    if (res?.products?.last_page < selectPage) {
+                        setSelectPage(res?.products?.last_page)
+                        fetch(`${productData.path}?json=true&per_page=12&page=${res.products.last_page}${filterBrands?.join('')}${priceRange?.join('')}`)
+                            .then(res => res.json().then(res => {
+                                    dispatch(setShopProducts(res.products))
+                                    pushStateData(`per_page=12&page=${res.products.last_page}${filterBrands?.join('')}${priceRange?.join('')}`)
+                                }
+                            ));
+                    }
+                    if (r) {
+                        dispatch(setShopProducts(res.products))
+                        pushStateData(`per_page=12&page=${selectPage}${filterBrands?.join('')}${priceRange?.join('')}`)
+                    }
+                    setR(true)
+
+                }
+            ));
+    }, [filterBrands, priceRange])
+
+
+    let paginate = (e) => {
+        // console.log(e, "EEE")
+        fetch(`${productData.path}?json=true&per_page=12&page=${e.selected + 1}`)
+            .then(res => res.json().then(res => {
+                    setSelectPage(e.selected + 1)
+                    window.scrollTo(0, 100)
+                    if (filterBrands.length !== 0 || priceRange.length !== 0) {
+                        fetch(`${productData.path}?json=true&per_page=12&page=${e.selected + 1}${filterBrands?.join('')}${priceRange?.join('')}`)
+                            .then(res => res.json().then(res => {
+                                    // console.log(res.products, "res.pag")
+                                    dispatch(setShopProducts(res.products))
+                                    pushStateData(`per_page=12&page=${e.selected + 1}${filterBrands?.join('')}${priceRange?.join('')}`)
+
+                                }
+                            ));
+                    } else {
+                        dispatch(setShopProducts(res?.products))
+                        pushStateData(`per_page=12&page=${e.selected + 1}`)
+                    }
+
+                }
+            ));
+
+    }
+
+
+    // console.log(productData?.last_page, "eeee")
+    // console.log(selectPage, "selectPage")
+
+
     return (
         <nav className={`page-section ${addClass ? addClass : ''}`}>
-            {/*<Pagination>*/}
-            {/*    <PaginationItem onClick={() => paginate(currentPage - 1)}>*/}
-            {/*        <PaginationLink>*/}
-            {/*<span aria-hidden='true'>*/}
-            {/*  <i className='fas fa-chevron-left'></i>*/}
-            {/*</span>*/}
-            {/*        </PaginationLink>*/}
-            {/*    </PaginationItem>*/}
-            {/*    {pageNumber.map((number, i) => {*/}
-            {/*        return (*/}
-            {/*            <PaginationItem className={`${currentPage === number ? 'active' : ''}`}*/}
-            {/*                            onClick={() => paginate(number)} key={i}>*/}
-            {/*                <PaginationLink>{number}</PaginationLink>*/}
-            {/*            </PaginationItem>*/}
-            {/*        );*/}
-            {/*    })}*/}
-
-            {/*    <PaginationItem onClick={() => paginate(currentPage + 1)}>*/}
-            {/*        <PaginationLink>*/}
-            {/*<span aria-hidden='true'>*/}
-            {/*  <i className='fas fa-chevron-right'></i>*/}
-            {/*</span>*/}
-            {/*        </PaginationLink>*/}
-            {/*    </PaginationItem>*/}
-            {/*</Pagination>*/}
-
             <ReactPaginate
                 pageCount={productData?.last_page}
+                forcePage={selectPage - 1} // Set the initial selected page
                 breakLabel="..."
                 nextLabel=">"
                 previousLabel="<"
@@ -71,7 +114,7 @@ useEffect(()=>{
                 pageRangeDisplayed={3}
                 renderOnZeroPageCount={null}
                 disabledClassName="d-none"
-                onClick={(e) => paginate(e)}
+                onPageChange={(e) => paginate(e)}
             />
         </nav>
     );

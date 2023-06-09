@@ -54,8 +54,8 @@ const VRSliders = ({FilterVrProduct, padding, paddingBottomm}) => {
                                             <h5 style={{margin: "16px 0"}}>{elem.name}</h5>
                                         </a>
                                         <div style={{margin: "16px 0"}}>
-                                            <div className='font-light ml-1'># {elem.sku} </div>
-                                            <div className='font-light ml-1'> # {elem.eclipse_number}</div>
+                                            <div className='font-light ml-1' style={{fontSize:"12px"}}># {elem.sku} </div>
+                                            <div className='font-light ml-1' style={{fontSize:"12px"}}> # {elem.eclipse_number}</div>
                                         </div>
                                         <ul style={{listStylePosition: "inside", margin: "16px 0"}}>
                                             <li className="li-home-products" style={{display: "block"}}>Special Order

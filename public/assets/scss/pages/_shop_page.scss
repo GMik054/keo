@@ -91,9 +91,10 @@
 }
 
 .category-option {
-  position: sticky;
-  top: 40px;
-  z-index: 1;
+  //position: sticky;
+  position: inherit;
+  //top: 40px;
+  //z-index: 1;
 
   //@include mq-max(lg) {
   //  position: fixed;
@@ -1912,14 +1913,17 @@
     //flex-direction: column;
     justify-content: center;
     border-right: 1px solid $light-blue;
-    a{
+
+    a {
       display: flex;
       align-items: center;
       flex-direction: column;
     }
-    img{
+
+    img {
       max-width: 80px;
     }
+
     @include mq-max(md) {
       border-right: none;
       border-bottom: 1px solid $light-blue;
@@ -1932,6 +1936,7 @@
       font-weight: 500;
       text-align: center;
       color: black;
+
       &:hover {
         color: var(--theme-color);
       }

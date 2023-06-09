@@ -17,7 +17,7 @@ const ElectronicHurryUp = ({ tabSection }) => {
           <div className='col'>
             <SectionHeader title={SpecialOffer} subTitle={SpecialOffer} />
             <div className='tab-wrap'>
-              <TabNavBar TabFilter={tabSection} />
+              {/*<TabNavBar TabFilter={tabSection} />*/}
             </div>
           </div>
         </Row>

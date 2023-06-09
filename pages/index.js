@@ -58,6 +58,7 @@ export default function Home({data}) {
     const isCategories = true;
     const removePadding = true;
     const addBgColor = true;
+
     return (
         <>
             <Head>

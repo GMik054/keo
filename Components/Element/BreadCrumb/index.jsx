@@ -5,9 +5,9 @@ import BoxAnimationSection from './BoxAnimationSection';
 import ShoesCategory from "../../ShoesDemo/ShoesCategory";
 import CategoryCard from "../../ShoesDemo/ShoesCategory/CategoryCard";
 
-const BreadCrumb = (props) => {
-    const {parent = '', title = ''} = props;
-    const ShoesFilter = props?.categoryBanner?.filter((el) => el.type === 'shoes');
+const BreadCrumb = ({parent, title, categoryBanner}) => {
+    // const {parent = '', title = ''} = props;
+    // const ShoesFilter = props?.categoryBanner?.filter((el) => el.type === 'shoes');
     return (
         <section
             // className='breadcrumb-section section-b-space'
@@ -17,7 +17,7 @@ const BreadCrumb = (props) => {
             {/*<BoxAnimationSection />*/}
             <Container>
                 <Row>
-                    <Col xs='12' style={{margin: ShoesFilter ? "0 0 30px" : "0"}}>
+                    <Col xs='12' style={{margin: categoryBanner ? "0 0 30px" : "0"}}>
                         <nav>
                             <ol className='breadcrumb'>
                                 <li className='breadcrumb-item'>
@@ -30,11 +30,11 @@ const BreadCrumb = (props) => {
                                 </li>
                             </ol>
                         </nav>
-                        {ShoesFilter ? <h2>{title}</h2> : ""}
+                        {categoryBanner ? <h2>{title}</h2> : ""}
                     </Col>
                     {
-                        ShoesFilter ?
-                            <CategoryCard ShoesFilter={ShoesFilter}/> : ""
+                        categoryBanner ?
+                            <CategoryCard ShoesFilter={categoryBanner}/> : ""
                     }
 
                 </Row>

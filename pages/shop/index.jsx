@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Layout6 from "../../Layout/Layout6";
 import Head from "next/head";
 import BreadCrumb from "../../Components/Element/BreadCrumb";
@@ -15,6 +15,7 @@ import ElectronicVR from "../../Components/ElectronicDemo/ElectronicVR";
 
 const Shop = ({data}) => {
     // console.log(data)
+
     return (
         <Layout6 mainMenu={data?.mainMenu[0]} data={data}>
             <Head>
