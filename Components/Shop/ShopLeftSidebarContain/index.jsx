@@ -8,20 +8,9 @@ import FilterContent from '../ShopCanvasFilter/FilterContent';
 import ShopBannerDetails from '../ShopCanvasFilter/ShopBannerDetails';
 import SidebarFilter from './SidebarFilter';
 
-const ShopLeftSidebarContain = ({shopProducts,shopFilters, listGrid}) => {
-    // const filterProduct = useFilter(productData);
-    // const StoreProducts = filterProduct && filterProduct;
-    const [currentPage, setCurrentPage] = useState(1);
-    const [dataPerPage] = useState(10);
-    const indexOfLastPost = currentPage * dataPerPage;
-    const indexOfFirstPost = indexOfLastPost - dataPerPage;
-    // const currentData = StoreProducts && StoreProducts?.slice(indexOfFirstPost, indexOfLastPost);
-    // const paginate = (pageNumber) => {
-    //     if (pageNumber > 0 && pageNumber < currentData?.length) {
-    //         setCurrentPage(pageNumber);
-    //     }
-    // };
-    // console.log(shopProducts)
+const ShopLeftSidebarContain = ({shopProducts, shopFilters, listGrid}) => {
+
+
     return (
         <section className='section-b-space'>
             <Container>
@@ -32,13 +21,7 @@ const ShopLeftSidebarContain = ({shopProducts,shopFilters, listGrid}) => {
                         <FilterButton customClass={'filter-button mb-3'}/>
                         <FilterContent listGrid={listGrid}/>
                         <AllProducts currentData={shopProducts?.data}/>
-                        <PaginationComp
-                            // dataPerPage={dataPerPage}
-                            //             StoreProductLength={categoriesData.last_page}
-                            productData={shopProducts}
-                            // currentPage={currentPage}
-                            // paginate={paginate}
-                        />
+                        <PaginationComp productData={shopProducts}/>
                     </Col>
                 </Row>
             </Container>

@@ -11,6 +11,7 @@ import Img from '../../Element/Images';
 import ModelViewProduct from '../../Element/ModelViewProduct';
 import SkeletonLoader from '../../Element/SkeletonLoader';
 import {Btn} from "../../AbstractElements";
+// import {logTar} from "npm/lib/utils/tar";
 
 const AllProducts = ({currentData}) => {
     const {symbol, currencyValue} = useSelector((state) => state.CurrencyReducer);
@@ -18,11 +19,13 @@ const AllProducts = ({currentData}) => {
     const [isLoading, setIsLoading] = useState(true);
     // console.log(initialGrid,"initialGrid")
 
-    useEffect(() => {
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 2000);
-    }, []);
+        useEffect(() => {
+            setIsLoading(true); // Set isLoading to true when currentData changes
+            setTimeout(() => {
+                setIsLoading(false);
+            }, 1000);
+        }, [currentData]);
+        console.log(currentData,"dd")
     return (
         <div
             className={`row g-sm-4 g-3 gx-sm-4 gx-3 mt-1 row-cols-1 row-cols-sm-2 row-cols-xl-4 custom-gy-5 product-style-2 ratio_asos product-list-section ${initialGrid}`}>

@@ -23,10 +23,19 @@ const PriceRange = ({productData}) => {
         }
     }, []);
 
+    // const handleChange = (val) => {
+    //     setValues1(val);
+    //     dispatch(setPriceRange([`&min_price=${val[0]}`, `&max_price=${val[1]}`]))
+    // };
+
     const handleChange = (val) => {
         setValues1(val);
-        dispatch(setPriceRange([`&min_price=${val[0]}`, `&max_price=${val[1]}`]))
     };
+
+    const handleMouseUp = () => {
+        dispatch(setPriceRange([`&min_price=${values1[0]}`, `&max_price=${values1[1]}`]));
+    };
+
     return (
         <AccordionItem className="category-price">
             <AccordionHeader targetId="3">{Prices}</AccordionHeader>
@@ -46,10 +55,12 @@ const PriceRange = ({productData}) => {
                         min={MIN}
                         max={MAX + 10}
                         onChange={(values) => handleChange(values)}
+
                         renderTrack={({props, children}) => (
                             <div
                                 onMouseDown={props.onMouseDown}
                                 onTouchStart={props.onTouchStart}
+                                onMouseUp={handleMouseUp}
                                 style={{
                                     ...props.style,
                                     height: "100px",
