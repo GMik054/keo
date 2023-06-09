@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {AccordionBody, AccordionHeader, AccordionItem, Label} from 'reactstrap';
 import {Category} from '../../Constant';
 
-const CategoryFilter = ({productData, index}) => {
+const CategoryFilter = ({productData, index, categoryArray, setCategoryArray, addCategory}) => {
     // const [allCategory, setAllCategory] = useState(['All']);
     // const { category } = useSelector((state) => state.ProductFilter);
     // const dispatch = useDispatch();
@@ -22,12 +22,15 @@ const CategoryFilter = ({productData, index}) => {
                 <ul className='category-list'>
                     {productData &&
                         productData.attributes.map((elem, i) => {
+                            const isChecked = categoryArray?.some((brand) => brand?.id === elem?.id);
+
                             return (
                                 <li key={i}>
                                     <div className='form-check p-0 custome-form-check'>
                                         <input className='checkbox_animated check-it' type='checkbox'
                                             // id={elem} value={elem}
-                                            // checked={category.includes(elem)} onChange={(e) => handleChange(e)}
+                                            checked={isChecked}
+                                            onChange={() => addCategory(elem)}
                                         />
                                         <Label className='form-check-label'
                                             // htmlFor={elem}

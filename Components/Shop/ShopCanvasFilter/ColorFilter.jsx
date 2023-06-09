@@ -3,21 +3,21 @@ import {useDispatch, useSelector} from 'react-redux';
 import {AccordionBody, AccordionHeader, AccordionItem} from 'reactstrap';
 import {Color} from '../../Constant';
 
-const ColorFilter = ({productData}) => {
+const ColorFilter = ({productData, categoryArray, setCategoryArray, addCategory}) => {
     // const dispatch = useDispatch();
     // const {color} = useSelector((state) => state.ProductFilter);
     const [colorArray, setColorArray] = useState([]);
     // useEffect(() => {
-        // productData?.map((el) => setColorArray((prev) => Array.from(new Set([...prev, ...el?.colors]))));
+    // productData?.map((el) => setColorArray((prev) => Array.from(new Set([...prev, ...el?.colors]))));
     // }, [productData]);
 
-    const addColor = (elem) => {
-        if (colorArray.includes(elem)) {
-            setColorArray((prev) => prev.filter((color) => color !== elem));
-        } else {
-            setColorArray((prev) => [...prev, elem]);
-        }
-    };
+    // const addColor = (elem) => {
+    //     if (colorArray.includes(elem)) {
+    //         setColorArray((prev) => prev.filter((color) => color !== elem));
+    //     } else {
+    //         setColorArray((prev) => [...prev, elem]);
+    //     }
+    // };
     return (
         <AccordionItem className='category-color'>
             <AccordionHeader targetId='2'>{Color}</AccordionHeader>
@@ -27,14 +27,14 @@ const ColorFilter = ({productData}) => {
                     <ul className='category-list'>
                         {productData?.attributes?.map((elem, i) => {
                                 // console.log(elem,"elem")
+                                const isChecked = categoryArray?.some((brand) => brand?.id === elem?.id);
                                 return (
-
                                     <li
-                                        className={`${colorArray?.includes(elem) ? 'active' : ''}`}
+                                        className={`${isChecked ? 'active' : ''}`}
                                         key={i}>
                                         <a style={{background: elem.color}}
                                             // onClick={() => dispatch({type: 'COLORFILTER', payload: elem})}
-                                           onClick={() => addColor(elem)}
+                                           onClick={() => addCategory(elem)}
                                         >
                                             <i className='fas fa-check'></i>
                                         </a>

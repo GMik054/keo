@@ -1,23 +1,20 @@
 import React, {useEffect, useState} from 'react';
-import {Pagination, PaginationItem, PaginationLink} from 'reactstrap';
 import ReactPaginate from "react-paginate";
-import {APICallUrl} from "../Constant";
-import {setAuth, setLoginToken, setUser} from "../../ReduxToolkit/Slices/LoginSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {
-    selectFilterBrands, selectPriceRange, selectPriceRangeMax, selectPriceRangeMin, selectShopProducts,
-    setShopCategory,
-    setShopFilters,
+    selectFilterBrands,
+    selectFilterCategory,
+    selectPriceRange,
     setShopProducts
 } from "../../ReduxToolkit/Slices/ShopProductsSlice";
 import {useRouter} from "next/router";
-import {useSearchParams} from "next/navigation";
 
 const PaginationComp = ({productData, addClass}) => {
 
     let [selectPage, setSelectPage] = useState(1);
     let dispatch = useDispatch();
     let filterBrands = useSelector(selectFilterBrands);
+    let filterCategory = useSelector(selectFilterCategory);
     let priceRange = useSelector(selectPriceRange);
     const router = useRouter();
 
@@ -29,9 +26,9 @@ const PaginationComp = ({productData, addClass}) => {
     let [r, setR] = useState(false)
 
     useEffect(() => {
-        // console.log(`${productData.path}?json=true&per_page=12&page=${router?.query?.page}${typeof router?.query["brands[]"] === 'string' ? `&brands%5B%5D=${Number(router?.query["brands[]"])}` : router?.query?.["brands[]"].map(el => `&brands%5B%5D=${Number(el)}`).join('')}${router?.query?.min_price && `&min_price=${Number(router?.query?.min_price)}`}${router?.query?.max_price && `&max_price=${Number(router?.query?.max_price)}`}`)
+        // console.log(`${productData.path}?json=true&per_page=12&page=${router?.query?.page}${typeof router?.query["brands[]"] === 'string' ? `&brands%5B%5D=${Number(router?.query["brands[]"])}` : router?.query["brands[]"] ? router?.query?.["brands[]"].map(el => `&brands%5B%5D=${Number(el)}`).join('') : ""}${router?.query?.min_price ? `&min_price=${Number(router?.query?.min_price)}` : ""}${router?.query?.max_price ? `&max_price=${Number(router?.query?.max_price)}` : ""}${typeof router?.query["attributes[]"] === 'string' ? `&attributes%5B%5D=${Number(router?.query["attributes[]"])}` : router?.query["attributes[]"] ? router?.query?.["attributes[]"].map(el => `&attributes%5B%5D=${Number(el)}`).join('') : ""}`)
         if (Number(router?.query?.page) > 1 || Object.keys(router?.query).length > 3) {
-            fetch(`${productData.path}?json=true&per_page=12&page=${router?.query?.page}${typeof router?.query["brands[]"] === 'string' ? `&brands%5B%5D=${Number(router?.query["brands[]"])}` : router?.query?.["brands[]"].map(el => `&brands%5B%5D=${Number(el)}`).join('')}${router?.query?.min_price && `&min_price=${Number(router?.query?.min_price)}`}${router?.query?.max_price && `&max_price=${Number(router?.query?.max_price)}`}`)
+            fetch(`${productData.path}?json=true&per_page=12&page=${router?.query?.page}${typeof router?.query["brands[]"] === 'string' ? `&brands%5B%5D=${Number(router?.query["brands[]"])}` : router?.query["brands[]"] ? router?.query?.["brands[]"].map(el => `&brands%5B%5D=${Number(el)}`).join('') : ""}${router?.query?.min_price ? `&min_price=${Number(router?.query?.min_price)}` : ""}${router?.query?.max_price ? `&max_price=${Number(router?.query?.max_price)}` : ""}${typeof router?.query["attributes[]"] === 'string' ? `&attributes%5B%5D=${Number(router?.query["attributes[]"])}` : router?.query["attributes[]"] ? router?.query?.["attributes[]"].map(el => `&attributes%5B%5D=${Number(el)}`).join('') : ""}`)
                 .then(res => res.json().then(res => {
                         setSelectPage(res.products.current_page)
                         dispatch(setShopProducts(res.products))
@@ -41,41 +38,38 @@ const PaginationComp = ({productData, addClass}) => {
     }, []);
 
     useEffect(() => {
-        fetch(`${productData?.path}?json=true&per_page=12&page=${selectPage}${filterBrands?.join('')}${priceRange?.join('')}`)
+        fetch(`${productData?.path}?json=true&per_page=12&page=${selectPage}${filterBrands?.join('')}${priceRange?.join('')}${filterCategory?.join('')}`)
             .then(res => res.json().then(res => {
                     if (res?.products?.last_page < selectPage) {
                         setSelectPage(res?.products?.last_page)
-                        fetch(`${productData.path}?json=true&per_page=12&page=${res.products.last_page}${filterBrands?.join('')}${priceRange?.join('')}`)
+                        fetch(`${productData.path}?json=true&per_page=12&page=${res.products.last_page}${filterBrands?.join('')}${priceRange?.join('')}${filterCategory?.join('')}`)
                             .then(res => res.json().then(res => {
                                     dispatch(setShopProducts(res.products))
-                                    pushStateData(`per_page=12&page=${res.products.last_page}${filterBrands?.join('')}${priceRange?.join('')}`)
+                                    pushStateData(`per_page=12&page=${res.products.last_page}${filterBrands?.join('')}${priceRange?.join('')}${filterCategory?.join('')}`)
                                 }
                             ));
                     }
                     if (r) {
                         dispatch(setShopProducts(res.products))
-                        pushStateData(`per_page=12&page=${selectPage}${filterBrands?.join('')}${priceRange?.join('')}`)
+                        pushStateData(`per_page=12&page=${selectPage}${filterBrands?.join('')}${priceRange?.join('')}${filterCategory?.join('')}`)
                     }
                     setR(true)
 
                 }
             ));
-    }, [filterBrands, priceRange])
+    }, [filterBrands, filterCategory, priceRange])
 
 
     let paginate = (e) => {
-        // console.log(e, "EEE")
         fetch(`${productData.path}?json=true&per_page=12&page=${e.selected + 1}`)
             .then(res => res.json().then(res => {
                     setSelectPage(e.selected + 1)
                     window.scrollTo(0, 100)
                     if (filterBrands.length !== 0 || priceRange.length !== 0) {
-                        fetch(`${productData.path}?json=true&per_page=12&page=${e.selected + 1}${filterBrands?.join('')}${priceRange?.join('')}`)
+                        fetch(`${productData.path}?json=true&per_page=12&page=${e.selected + 1}${filterBrands?.join('')}${priceRange?.join('')}${filterCategory?.join('')}`)
                             .then(res => res.json().then(res => {
-                                    // console.log(res.products, "res.pag")
                                     dispatch(setShopProducts(res.products))
-                                    pushStateData(`per_page=12&page=${e.selected + 1}${filterBrands?.join('')}${priceRange?.join('')}`)
-
+                                    pushStateData(`per_page=12&page=${e.selected + 1}${filterBrands?.join('')}${priceRange?.join('')}${filterCategory?.join('')}`)
                                 }
                             ));
                     } else {
@@ -89,15 +83,13 @@ const PaginationComp = ({productData, addClass}) => {
     }
 
 
-    // console.log(productData?.last_page, "eeee")
-    // console.log(selectPage, "selectPage")
 
 
     return (
         <nav className={`page-section ${addClass ? addClass : ''}`}>
             <ReactPaginate
                 pageCount={productData?.last_page}
-                forcePage={selectPage - 1} // Set the initial selected page
+                forcePage={selectPage - 1}
                 breakLabel="..."
                 nextLabel=">"
                 previousLabel="<"

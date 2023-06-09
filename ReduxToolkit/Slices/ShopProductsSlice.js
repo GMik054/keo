@@ -7,8 +7,8 @@ const initialState = {
     shopProducts: {},
 
     filterBrands: [],
-
-    priceRange: [],
+    filterCategory: [],
+    priceRange: []
 };
 export const getShopProducts = createAsyncThunk('ShopProductsSlice/getProducts', async (value) => {
         // console.log(value)
@@ -41,10 +41,15 @@ export const ShopProductsSlice = createSlice({
             // console.log(action.payload, "action.payload")
             state.filterBrands = action.payload
         },
+        setFilterCategory: (state, action) => {
+            // console.log(action.payload, "action.payload")
+            state.filterCategory = action.payload
+        },
         setPriceRange: (state, action) => {
             // console.log(action.payload, "action.payload")
             state.priceRange = action.payload
         },
+
     },
     extraReducers: {
         [getShopProducts.pending]: (state, action) => {
@@ -59,9 +64,10 @@ export const ShopProductsSlice = createSlice({
     }
 })
 export const selectShopCategory = (state) => state.ShopProductsSlice.shopCategory;
-export const selectShopFilters= (state) => state.ShopProductsSlice.shopFilters;
+export const selectShopFilters = (state) => state.ShopProductsSlice.shopFilters;
 export const selectShopProducts = (state) => state.ShopProductsSlice.shopProducts;
 export const selectFilterBrands = (state) => state.ShopProductsSlice.filterBrands;
+export const selectFilterCategory = (state) => state.ShopProductsSlice.filterCategory;
 export const selectPriceRange = (state) => state.ShopProductsSlice.priceRange;
 
 export const {
@@ -69,5 +75,6 @@ export const {
     setShopFilters,
     setShopProducts,
     setFilterBrands,
+    setFilterCategory,
     setPriceRange
 } = ShopProductsSlice.actions;
