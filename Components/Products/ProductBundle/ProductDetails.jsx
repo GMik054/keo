@@ -51,9 +51,9 @@ const ProductDetails = ({bundles, singleProduct}) => {
             }}>
                 <span><span className="font-light ml-1">By: <Link href="category/samsung">Samsung</Link></span></span>
                 <span><span className="font-light ml-1">Model</span> <span
-                    className="font-bold ml-1"># {singleProduct.sku}</span></span>
+                    className="font-bold ml-1"># {singleProduct?.sku}</span></span>
                 <span><span className="font-light ml-1">Part Number</span> <span
-                    className="font-bold ml-1"># {singleProduct.eclipse_number}</span></span>
+                    className="font-bold ml-1"># {singleProduct?.eclipse_number}</span></span>
 
             </div>
 
