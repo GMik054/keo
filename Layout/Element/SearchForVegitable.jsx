@@ -10,11 +10,11 @@ const SearchForVegitable = () => {
   const { Is_Focus } = useSelector((state) => state.CommonReducer);
   const [onInputText, setOnInputText] = useState('');
   const [productData, setProductData] = useState([]);
-  useEffect(() => {
-    getAPIData(`${process.env.API_URL}products`).then((res) => {
-      setProductData(res?.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   getAPIData(`${process.env.API_URL}products`).then((res) => {
+  //     setProductData(res?.data);
+  //   });
+  // }, []);
   const FilteredData = productData?.filter((el) => el.name.toLowerCase().includes(onInputText.toLowerCase()));
   const handleChange = (e) => {
     setOnInputText(e.target.value);

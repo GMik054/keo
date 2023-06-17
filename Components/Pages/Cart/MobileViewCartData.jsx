@@ -5,7 +5,7 @@ const MobileViewCartData = ({elem, removeProduct, handleQtyChange, quantity}) =>
     return (
         <td className="td-left-center">
             <div style={{display: "grid", rowGap: "8px"}}>
-                <h3>{elem.name}</h3>
+                <h3>{elem.product.name}</h3>
                 <div><span className="font-light ml-1">Model</span> <span
                     className="font-bold ml-1"># UN55TU7000FXZA</span></div>
                 <div><span className="font-light ml-1">Part Number</span> <span

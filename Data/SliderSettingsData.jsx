@@ -788,14 +788,16 @@ export const AutoFadeSliderNavData = {
     slidesToShow: 3,
     slidesToScroll: 1,
     dots: false,
-    centerMode: true,
-    focusOnSelect: true,
-    centerPadding: 0,
+    // centerMode: true,
+    focusOnSelect: false,
+    // centerPadding: 0,
     // fade: true,
     arrows: true,
-    // autoplay: true,
-    autoplaySpeed: 3000,
-
+    infinite: true,
+    autoplay: false,
+    // autoplaySpeed: 3000,
+    // rtl: true,
+    initialSlide: 0
 };
 // ----------------*****************----------------******************------------
 export const ThumbNavSlider = {
@@ -804,6 +806,7 @@ export const ThumbNavSlider = {
     dots: false,
     centerMode: true,
     focusOnSelect: true,
+    focus:true,
     vertical: true,
     centerPadding: 0,
     arrows: false,

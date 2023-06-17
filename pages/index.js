@@ -62,15 +62,15 @@ export default function Home({data}) {
     return (
         <>
             <Head>
+                <title>KOA Shop</title>
                 <meta name='viewport' content='width=device-width, initial-scale=1'/>
                 <link rel='icon' type='image/x-icon' href={`/assets/svg/koalogo.png`}/>
             </Head>
             <Layout6 mainMenu={data?.mainMenu[0]} data={data}>
-                <Head>
-                    <title>KOA Shop</title>
-                    <meta name='viewport' content='width=device-width, initial-scale=1'/>
-                    <link rel='icon' type='image/x-icon' href={`/assets/svg/koalogo.png`}/>
-                </Head>
+                {/*<Head>*/}
+                {/*    <meta name='viewport' content='width=device-width, initial-scale=1'/>*/}
+                {/*    <link rel='icon' type='image/x-icon' href={`/assets/svg/koalogo.png`}/>*/}
+                {/*</Head>*/}
 
                 <VegetableHomeSlider mainSlider={mainSlider} slider={data.slider.slider_items} />
                 <FashionService removePadding={removePadding} />

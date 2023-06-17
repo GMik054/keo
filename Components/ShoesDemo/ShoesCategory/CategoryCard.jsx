@@ -4,19 +4,21 @@ import {useSelector} from 'react-redux';
 import Slider from 'react-slick';
 import {ShoesCategorySlider} from '../../../Data/SliderSettingsData';
 import {APICallUrl, CommonPath} from '../../Constant';
+import {useRouter} from "next/router";
 
 const CategoryCard = ({ShoesFilter}) => {
         const {symbol, currencyValue} = useSelector((state) => state.CurrencyReducer);
+        let router = useRouter()
+        console.log(router, "RR")
         return (
             <div className='category-wrapper category-slider white-arrow'>
                 <Slider {...ShoesCategorySlider}>
-                    {ShoesFilter.map((elem, i) => {
-                        // console.log(elem)
+                    {ShoesFilter?.map((elem, i) => {
+                        console.log(elem, "elem")
                         return (
                             <div key={i}>
                                 <div className='category-wrap category-color' style={{justifyContent: "center"}}>
-                                    <Link href={'/shop/shop_left_sidebar'}>
-
+                                    <Link href={`${router?.query?.id}/${elem?.slugable?.key}`}>
                                         <div style={{
                                             display: "flex",
                                             alignItems: "center",
@@ -25,8 +27,8 @@ const CategoryCard = ({ShoesFilter}) => {
                                             maxHeight: "47px",
                                         }}>
                                             <img
-                                                src={`${APICallUrl}/storage/${elem.image}`} className='img-fluid'
-                                                alt={elem.name} title={elem.name}/>
+                                                src={`${APICallUrl}/storage/${elem?.image}`} className='img-fluid'
+                                                alt={elem?.name} title={elem?.name}/>
                                         </div>
 
 

@@ -14,14 +14,14 @@ const CompareTable = () => {
   const router = useRouter();
   const [comapreData, setComapreData] = useState([]);
   const { compareProducts } = useSelector((state) => state.CompareReducer);
-  useEffect(() => {
-    getAPIData(`${process.env.API_URL}getcompare`)
-      .then((res) => {
-        setComapreData(res?.data);
-        'res?.data', res?.data;
-      })
-      .catch((error) => console.log('Error', error));
-  }, [compareProducts]);
+  // useEffect(() => {
+  //   getAPIData(`${process.env.API_URL}getcompare`)
+  //     .then((res) => {
+  //       setComapreData(res?.data);
+  //       'res?.data', res?.data;
+  //     })
+  //     .catch((error) => console.log('Error', error));
+  // }, [compareProducts]);
   return (
     <section className='section-b-space'>
       <Container>

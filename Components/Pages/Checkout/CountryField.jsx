@@ -4,7 +4,7 @@ import { Choose, Country, CountryArr } from '../../Constant';
 
 const CountryField = () => {
   return (
-    <Col md='12'>
+    <Col md='6'>
       <Label htmlFor='validationCustom04' className='form-label '>
         {Country}
       </Label>

@@ -10,11 +10,11 @@ import WishlistTableHead from './WishlistTableHead';
 const WishlistDataList = ({ wishlistData }) => {
   const dispatch = useDispatch();
   const { symbol, currencyValue } = useSelector((state) => state.CurrencyReducer);
-  const removeProduct = (product) => {
-    deleteProduct(`${process.env.API_URL}remove/wishlist/${product.id}`).then((res) => {
-      dispatch({ type: 'ADDTOWISHLIST', payload: res?.data });
-    });
-  };
+  // const removeProduct = (product) => {
+  //   deleteProduct(`${process.env.API_URL}remove/wishlist/${product.id}`).then((res) => {
+  //     dispatch({ type: 'ADDTOWISHLIST', payload: res?.data });
+  //   });
+  // };
   return (
     <Table className='cart-table wishlist-table'>
       <WishlistTableHead />

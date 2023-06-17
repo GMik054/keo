@@ -9,9 +9,9 @@ const SortByType = () => {
   const [Features, setFeatures] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
-    getAPIData(`${process.env.API_URL}products`).then((res) => {
-      setGetProducts(res?.data);
-    });
+    // getAPIData(`${process.env.API_URL}products`).then((res) => {
+    //   setGetProducts(res?.data);
+    // });
   }, []);
   useEffect(() => {
     getProducts?.map((el) => setFeatures((prev) => Array.from(new Set([...prev, el?.type]))));

@@ -4,7 +4,7 @@ import { Choose, State, StateArr } from '../../Constant';
 
 const StateField = () => {
   return (
-    <Col md='6'>
+    <Col md='12'>
       <Label htmlFor='validationCustom04' className='form-label required-label'>
         City
       </Label>

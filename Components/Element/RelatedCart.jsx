@@ -12,11 +12,11 @@ const RelatedCartProduct = ({ addedCartData }) => {
   const [productData, setProductData] = useState([]);
   const { symbol, currencyValue } = useSelector((state) => state.CurrencyReducer);
 
-  useEffect(() => {
-    getAPIData(`${process.env.API_URL}products`).then((res) => {
-      setProductData(res?.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   getAPIData(`${process.env.API_URL}products`).then((res) => {
+  //     setProductData(res?.data);
+  //   });
+  // }, []);
 
   const filterByType = productData.filter((el) => el.type === addedCartData?.type);
   filterByType.splice(filterByType.map((object) => object.id).indexOf(addedCartData?.id), 1);

@@ -11,9 +11,9 @@ const SearchBarToggle = () => {
   const [onInputText, setOnInputText] = useState('');
   const [productData, setProductData] = useState([]);
   useEffect(() => {
-    getAPIData(`${process.env.API_URL}products`).then((res) => {
-      setProductData(res?.data);
-    });
+    // getAPIData(`${process.env.API_URL}products`).then((res) => {
+    //   setProductData(res?.data);
+    // });
   }, []);
   const FilteredData = productData?.filter((el) => el.name.toLowerCase().includes(onInputText.toLowerCase()));
   const handleChange = (e) => {

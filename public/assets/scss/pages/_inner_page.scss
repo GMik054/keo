@@ -2821,9 +2821,12 @@
   }
 }
 
+
+
 .cart-table {
   overflow: hidden;
   margin-bottom: 0;
+
 
   thead {
     th {
@@ -2949,6 +2952,7 @@
                 width: 48px;
                 padding: 6px;
               }
+
             }
           }
 
@@ -3043,6 +3047,7 @@ tfoot {
   }
 }
 
+
 .cart-section {
   .count-down {
     margin-bottom: 5px;
@@ -3092,12 +3097,67 @@ tfoot {
     }
   }
 
+  .cart-table-row {
+    gap: 20px;
+    padding-bottom: 6px;
+
+    .col-display-mobile {
+      display: none;
+    }
+
+    .cart-row {
+      //max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+      padding-top: 20px;
+      padding-bottom: 20px;
+
+      img {
+        max-width: 100%;
+        max-height: 180px;
+      }
+
+
+    }
+    .cart-row {
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        /* display: none; <- Crashes Chrome on hover */
+        -webkit-appearance: none;
+        margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+      }
+
+      input[type=number] {
+        -moz-appearance:textfield; /* Firefox */
+      }
+      @include mq-max(lg) {
+        margin: 0;
+        .col-display-mobile {
+          display: flex;
+          justify-content: end;
+          padding-bottom: 14px;
+        }
+        .td-left-center {
+          padding-bottom: 14px;
+        }
+        .col-display {
+          display: none;
+        }
+
+        img {
+          max-width: 100%;
+          max-height: 500px;
+        }
+      }
+    }
+  }
+
   .cart-table {
     overflow: hidden;
     margin-bottom: 0;
 
-    border-radius: 8px;
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+    //border-radius: 8px;
+    //box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
 
     thead {
       th {
@@ -3168,6 +3228,7 @@ tfoot {
       }
 
       td {
+        margin-bottom: 20px;
         vertical-align: middle;
         color: $black1;
         border-top: 0;
@@ -3589,7 +3650,8 @@ tfoot {
     gap: 11px;
 
     .checkout-image {
-      width: 50px;
+      //width: 50px;
+      width: 200px;
     }
 
     span {

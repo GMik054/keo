@@ -7,14 +7,14 @@ import ElementDeal4 from './ElementDeal4';
 
 const ElementDealBannerContain = () => {
   const [bannerData, setBannerData] = useState([]);
-  useEffect(() => {
-    const types = ['banner'];
-    types.map((type, i) => {
-      getAPIData(`${process.env.API_URL}${type}`).then((res) => {
-        type === 'banner' && setBannerData(res?.data);
-      });
-    });
-  }, []);
+  // useEffect(() => {
+  //   const types = ['banner'];
+  //   types.map((type, i) => {
+  //     getAPIData(`${process.env.API_URL}${type}`).then((res) => {
+  //       type === 'banner' && setBannerData(res?.data);
+  //     });
+  //   });
+  // }, []);
   return (
     <section class=''>
       <ElementDeal1 bannerData={bannerData} />

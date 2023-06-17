@@ -21,59 +21,68 @@ import CartData from './CartData';
 import CounterCart from './CounterCart';
 import ProductActions from "../../Products/Product4ImageContain/ProductActions";
 import ElectronicVR from "../../ElectronicDemo/ElectronicVR";
+import {selectCart, selectSellTotal, selectTotal} from "../../../ReduxToolkit/Slices/CartSlice";
 
-const ProductCart = ({productData}) => {
-    const [cartData, setCartData] = useState([]);
-    const dispatch = useDispatch();
+const ProductCart = () => {
+    // const [cartData, setCartData] = useState([]);
+    // const dispatch = useDispatch();
     const router = useRouter();
-    const {product} = useSelector((state) => state.AddToCartReducer);
+
+    // const {product} = useSelector((state) => state.AddToCartReducer);
 
 
-    useEffect(() => {
-        getAPIData(`${process.env.API_URL}getcart`)
-            .then((res) => {
-                setCartData(res.data);
-            })
-            .catch((error) => console.log('Error', error));
-    }, [product]);
-    const removeAll = () => {
-        deleteProduct(`${process.env.API_URL}remove/cart/all`).then((res) => {
-            setCartData(res.data);
-            dispatch({type: 'ADDTOCART', payload: res?.data});
-        });
-    };
-    const getTotalPrice = () => {
-        var addPrice = 0;
-        const filterPrice =
-            cartData &&
-            cartData.map((el) => {
-                return el.price;
-            });
-        filterPrice?.map((elem) => (addPrice += elem));
-        return addPrice;
-    };
-    const [totalMrp, setTotalMrp] = useState(0);
+    // useEffect(() => {
+    //     getAPIData(`${process.env.API_URL}getcart`)
+    //         .then((res) => {
+    //             setCartData(res.data);
+    //         })
+    //         .catch((error) => console.log('Error', error));
+    // }, [product]);
+    // const removeAll = () => {
+    //     deleteProduct(`${process.env.API_URL}remove/cart/all`).then((res) => {
+    //         setCartData(res.data);
+    //         dispatch({type: 'ADDTOCART', payload: res?.data});
+    //     });
+    // };
+    // const getTotalPrice = () => {
+    //     var addPrice = 0;
+    //     const filterPrice =
+    //         cartData &&
+    //         cartData.map((el) => {
+    //             return el.price;
+    //         });
+    //     filterPrice?.map((elem) => (addPrice += elem));
+    //     return addPrice;
+    // };
+    // const [totalMrp, setTotalMrp] = useState(0);
+    let cart = useSelector(selectCart);
+    let total = useSelector(selectTotal);
+    let sellTotal = useSelector(selectSellTotal);
+    console.log(total, "total")
+    console.log(Number(sellTotal) - (Number(total)), "sellTotal")
+    // console.log(total.toFixed(2), "total")
+    // console.log(cart,"CArt")
 
     return (
         <section className='cart-section section-b-space' style={{backgroundColor: "white", paddingBottom: "0"}}>
             <Container>
                 <Row className=''>
-                    {cartData.length > 0 ? (
+                    {cart.length > 0 ? (
                         <>
                             {/*<CounterCart />*/}
-                            <CartData cartData={cartData} setTotalMrp={setTotalMrp}/>
+                            <CartData/>
                             <Col xl='5' xxl='4' className='ms-auto cart-checkout-section top-cart-elements'>
                                 <div className='cart-box'>
                                     <div className='cart-box-details'>
                                         <div className='total-details'>
-                                            <div className='top-details' style={{borderBottom:"none"}}>
+                                            <div className='top-details' style={{borderBottom: "none"}}>
                                                 <h3>Order Summary</h3>
                                                 {/*<h6>{CouponDiscount} <span>-$25.00</span></h6>*/}
                                                 {/*<h6>{ConvenienceFee}<span><del>$25.00</del></span></h6>*/}
                                                 <h6 className='fw-bold'>
-                                                    Subtotal: <span>${(totalMrp ? totalMrp - 25 : getTotalPrice() - 25) < 1 ? 0 : (totalMrp || getTotalPrice()) - 25}</span>
+                                                    Subtotal: <span>${total.toFixed(2)}</span>
                                                 </h6>
-                                                <h6 className='fw-bold shipping-info-for-cart'  >
+                                                <h6 className='fw-bold shipping-info-for-cart'>
                                                     Shipping: <ul>
                                                     <li>
                                                         <div className='form-check p-0 custome-form-check'>
@@ -140,26 +149,34 @@ const ProductCart = ({productData}) => {
                                                 </h6>
 
 
-                                                <h6 className='fw-normal' style={{color:"#969696"}}>
-                                                    Shipping to:  <span className="fw-bold" style={{color:"black"}}>7306 Coldwater Canyon Ave, North Hollywood, CA 91605</span>
-                                                    <div className="fw-normal " style={{textAlign:"end",padding:"8px 0",color:"var(--theme-color)",textDecoration: "underline"}}><a>Change Address</a></div>
+                                                <h6 className='fw-normal' style={{color: "#969696"}}>
+                                                    Shipping to: <span className="fw-bold" style={{color: "black"}}>7306 Coldwater Canyon Ave, North Hollywood, CA 91605</span>
+                                                    <div className="fw-normal " style={{
+                                                        textAlign: "end",
+                                                        padding: "8px 0",
+                                                        color: "var(--theme-color)",
+                                                        textDecoration: "underline"
+                                                    }}><a>Change Address</a></div>
                                                 </h6>
 
 
-                                                <div className='promo-section' style={{borderBottom: "1px solid #E6E8E9",paddingBottom:"16px" }}>
+                                                <div className='promo-section'
+                                                     style={{borderBottom: "1px solid #E6E8E9", paddingBottom: "16px"}}>
                                                     {/*<Form className='row' style={{display:"flex"}}>*/}
                                                     {/*    <Col xs='12'>*/}
 
                                                     {/*    </Col>*/}
-                                                        {/*<Col xs='5'>*/}
-                                                        {/*    <Btn attrBtn={{ className: 'btn btn-solid-default rounded btn' }}>{ApplyCoupon}</Btn>*/}
-                                                        {/*</Col>*/}
+                                                    {/*<Col xs='5'>*/}
+                                                    {/*    <Btn attrBtn={{ className: 'btn btn-solid-default rounded btn' }}>{ApplyCoupon}</Btn>*/}
+                                                    {/*</Col>*/}
                                                     {/*</Form>*/}
 
-                                                    <div className="coupon-block" >
+                                                    <div className="coupon-block">
                                                         <div className="coupon-input d-flex">
-                                                            <Input type='text' className='form-control' id='number' placeholder='Coupon Code' />
-                                                            <button className='btn coupon btn-solid-default btn'>Apply</button>
+                                                            <Input type='text' className='form-control' id='number'
+                                                                   placeholder='Coupon Code'/>
+                                                            <button className='btn coupon btn-solid-default btn'>Apply
+                                                            </button>
                                                         </div>
                                                         {/*{*/}
                                                         {/*    tr ? req.status === 500 || req.status === "error" ?*/}
@@ -168,29 +185,46 @@ const ProductCart = ({productData}) => {
                                                         {/*}*/}
                                                     </div>
                                                 </div>
-                                                <h2 className='fw-bold' style={{display:"flex", justifyContent:"space-between", alignItems:"center",padding:"20px 0"}}>
-                                                    Total:<div className="total-cart-details" >
-                                                    <span className="fw-normal red-font-size" style={{color:"var(--theme-color)"}}>You Save $250</span>
-                                                    <span className="fw-bold" style={{display:"flex",justifyContent:"end",color:"black",marginLeft:"8px"}}>$2755</span>
-                                                </div>
+                                                <h2 className='fw-bold' style={{
+                                                    display: "flex",
+                                                    justifyContent: "space-between",
+                                                    alignItems: "center",
+                                                    padding: "20px 0"
+                                                }}>
+                                                    Total:
+                                                    <div className="total-cart-details">
+                                                        {
+                                                            Number(sellTotal) !== 0 &&
+                                                            <span className="fw-normal red-font-size"
+                                                                  style={{color: "var(--theme-color)"}}>You Save ${Math.round(Number(sellTotal) - (Number(total)))}</span>
+                                                        }npm run dev
+                                                        <span className="fw-bold" style={{
+                                                            display: "flex",
+                                                            justifyContent: "end",
+                                                            color: "black",
+                                                            marginLeft: "8px"
+                                                        }}>${total.toFixed(2)}</span>
+                                                    </div>
                                                 </h2>
                                                 <div>
-                                                <div className='product-buttons'>
-                                                    {/*<ProductWishListAction singleProduct={singleProduct} />*/}
-                                                    <a  id='cartEffect'
-                                                       className='btn btn-solid btn-transparent hover-solid btn-animation' >
-                                                        {/*<i className='fa fa-shopping-cart'></i>*/}
-                                                        <span>Continue Shopping</span>
-                                                    </a>
+                                                    <div className='product-buttons'>
+                                                        {/*<ProductWishListAction singleProduct={singleProduct} />*/}
+                                                        <a id='cartEffect'
+                                                           className='btn btn-solid btn-transparent hover-solid btn-animation'>
+                                                            {/*<i className='fa fa-shopping-cart'></i>*/}
+                                                            <span>Continue Shopping</span>
+                                                        </a>
+                                                    </div>
+                                                    <div className='product-buttons'>
+                                                        {/*<ProductWishListAction singleProduct={singleProduct} />*/}
+                                                        <Link href={'/checkout'}
+                                                              className='btn btn-solid hover-solid btn-animation'>
+                                                            {/*<i className='fa fa-shopping-cart'></i>*/}
+                                                            <span>Checkout</span>
+                                                        </Link>
+
+                                                    </div>
                                                 </div>
-                                                <div className='product-buttons'>
-                                                    {/*<ProductWishListAction singleProduct={singleProduct} />*/}
-                                                    <a href='#javascript' id='cartEffect' className='btn btn-solid hover-solid btn-animation' >
-                                                        {/*<i className='fa fa-shopping-cart'></i>*/}
-                                                        <span>Checkout</span>
-                                                    </a>
-                                                </div>
-                                            </div>
                                                 {/*<div className='bottom-details'>*/}
                                                 {/*    <Link href={'/page/checkout'}>{ProcessCheckout}</Link>*/}
                                                 {/*</div>*/}

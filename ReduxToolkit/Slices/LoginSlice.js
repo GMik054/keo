@@ -4,7 +4,7 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 const initialState = {
     loginToken: {},
     auth: true,
-    userAuth: {}
+    authUser: {}
 };
 export const getLoginId = createAsyncThunk('login/getId', async (value) => {
         // console.log(value)
@@ -29,7 +29,10 @@ export const LoginTokenSlice = createSlice({
 
         },
         setUser: (state, action) => {
-            state.authUser = action.payload
+            console.log(action.payload, "ACTON")
+            // if (action.payload.error === false) {
+                state.authUser = action.payload
+            // }
         },
         signOut: (state, action) => {
             // state.authUser = action.payload
@@ -53,6 +56,6 @@ export const LoginTokenSlice = createSlice({
 })
 export const selectLoginToken = (state) => state.LoginTokenSlice.loginToken;
 export const selectAuth = (state) => state.LoginTokenSlice.auth;
-export const selectAuthUser = (state) => state.LoginTokenSlice.userAuth;
+export const selectAuthUser = (state) => state.LoginTokenSlice.authUser;
 
-export const {setLoginToken, setAuth, setUser,signOut} = LoginTokenSlice.actions;
+export const {setLoginToken, setAuth, setUser, signOut} = LoginTokenSlice.actions;

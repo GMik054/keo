@@ -12,47 +12,58 @@ import {
 import {useRouter} from "next/router";
 import {useDispatch, useSelector} from "react-redux";
 
-const BeforeSignInAccount = ({open}) => {
+const BeforeSignInAccount = ({open, toggleDivVisibility}) => {
     const router = useRouter();
-    let loginToken = useSelector(selectLoginToken)
     let auth = useSelector(selectAuth)
     let dispatch = useDispatch();
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const signIN = () => {
         fetch(`${APICallUrl}/api/v1/login`, {
             method: 'POST',
             headers: {
-                "Content-Type": "application/json;charset=UTF-8"
+                "Content-Type": "application/json;charset=UTF-8",
             },
             body: JSON.stringify({
-                "email": email,
-                "password": password
+                email: email,
+                password: password
             }),
-        }).then(res => res.json().then(res => {
-
+        })
+            .then((res) => res.json()).then((res) => {
                 if (res.error === false) {
-                    dispatch(setLoginToken(res?.data))
-                    dispatch(setAuth(res?.error))
+                    dispatch(setLoginToken(res.data));
+                    dispatch(setAuth(res.error));
+
                     fetch(`${APICallUrl}/api/v1/me`, {
                         method: 'GET',
                         headers: {
                             "Content-Type": "application/json;charset=UTF-8",
-                            "Authorization": `Bearer ${res?.data?.token}`
+                            Authorization: `Bearer ${res.data.token}`
                         }
-                    }).then(res => res.json().then(res => {
-                        // return res;
-                        // console.log(res, "res")
-                        dispatch(setUser(res))
-                    }));
+                    })
+                        .then((res) => res.json()).then((res) => {
+                            dispatch(setUser(res));
+                        })
+                        .catch((error) => {
+                            // Handle error if the second fetch fails
+                            console.error('Failed to fetch user data:', error);
+                        });
+                } else {
+                    // Handle error if the first fetch returns an error
+                    console.error('Login failed:', res.error);
                 }
-                // console.log(res)
-            }
-        ));
+            })
+            .catch((error) => {
+                // Handle general fetch error
+                console.error('Failed to login:', error);
+            });
     }
+
+
     return (
-        <div className='onhover-div profile-dropdown' style={open?{opacity: "1", visibility: "visible"}:{opacity: "0", visibility: "hidden"}}>
+        <div className='onhover-div profile-dropdown'
+             style={open ? {opacity: "1", visibility: "visible"} : { visibility: "hidden"}}
+        >
             <div className='profile-dropdown-div'>
                 <div>
                     <h3 className="before-h3">Sign In</h3>

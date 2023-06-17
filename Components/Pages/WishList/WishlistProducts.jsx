@@ -11,13 +11,13 @@ const WishlistProducts = () => {
   const [wishlistData, setWishlistData] = useState([]);
   const router = useRouter();
   const { wishlist } = useSelector((state) => state.AddToCartReducer);
-  useEffect(() => {
-    getAPIData(`${process.env.API_URL}getwishlist`)
-      .then((res) => {
-        setWishlistData(res.data);
-      })
-      .catch((error) => console.log('Error', error));
-  }, [wishlist]);
+  // useEffect(() => {
+  //   getAPIData(`${process.env.API_URL}getwishlist`)
+  //     .then((res) => {
+  //       setWishlistData(res.data);
+  //     })
+  //     .catch((error) => console.log('Error', error));
+  // }, [wishlist]);
   return (
     <section className='wish-list-section section-b-space'>
       <Container>

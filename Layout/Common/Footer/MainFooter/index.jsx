@@ -9,17 +9,17 @@ import QuestionTabs from './QuestionTab';
 const MainFooter = ({ QuestionTab,footerLeft,footerCenter,footerRight }) => {
   const [getFooter, setGetFooter] = useState([]);
 
-  useEffect(() => {
-    const type = 'footer';
-
-    getAPIData(`${process.env.API_URL}${type}`)
-      .then((res) => {
-        setGetFooter(res.data);
-      })
-      .catch((Error) => {
-        console.log('Error', Error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   const type = 'footer';
+  //
+  //   getAPIData(`${process.env.API_URL}${type}`)
+  //     .then((res) => {
+  //       setGetFooter(res.data);
+  //     })
+  //     .catch((Error) => {
+  //       console.log('Error', Error);
+  //     });
+  // }, []);
 
   return (
     <Container>

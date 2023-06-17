@@ -51,7 +51,8 @@
 .slick-slider {
   .slick-list {
     height: 100%;
-    margin: 0 -12px;
+    //margin: 0 -12px;
+    margin: 0;
 
     .slick-track {
       height: 100%;
@@ -720,6 +721,8 @@
 }
 
 .slick-prev {
+  width: 40px;
+  height: 40px;
   left: 20px !important;
 
   &:before {
@@ -729,6 +732,8 @@
 }
 
 .slick-next {
+  width: 40px;
+  height: 40px;
   right: 20px !important;
 
   &:before {

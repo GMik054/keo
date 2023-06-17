@@ -21,7 +21,7 @@ const VRSliders = ({FilterVrProduct, padding, paddingBottomm}) => {
         >
             <Slider {...VRSlider}>
                 {FilterVrProduct.map((elem, i) => {
-                    console.log(elem, "elem")
+                    // console.log(elem, "elem")
                     // let count = 0;
                     // let sum = elem.reviews.reduce(function (sum, item, index) {
                     //     count += item.star;
@@ -68,8 +68,8 @@ const VRSliders = ({FilterVrProduct, padding, paddingBottomm}) => {
                                             </li>
                                         </ul>
                                         <h3 className='theme-color fw-6-1' style={{margin: "16px 0"}}>
-                                            {symbol}{elem?.front_sale_price !== null || undefined ? elem?.front_sale_price.toFixed(2) : elem?.price}
-                                            {elem?.front_sale_price !== null || undefined ? <span
+                                            {symbol}{(elem?.front_sale_price !== null || undefined)&& (elem?.price > elem?.front_sale_price) ? elem?.front_sale_price.toFixed(2) : elem?.price}
+                                            {(elem?.front_sale_price !== null || undefined)&& (elem?.price > elem?.front_sale_price) ? <span
                                                 className='font-light ms-2'>{symbol}{elem?.price.toFixed(2)}</span> : ""}
 
                                             {/*{symbol}*/}

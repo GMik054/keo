@@ -7,17 +7,17 @@ import { Addtocart } from '../Constant';
 
 const AddtoCartBtn = ({ customeclass, data, btn }) => {
   const dispatch = useDispatch();
-  const AddtoCart = () => {
-    axios
-      .post(`${process.env.API_URL}addtocart`, { id: data?.id })
-      .then((res) => {
-        dispatch({ type: 'ADDTOCART', payload: res.data });
-      })
-      .catch((error) => {
-        console.error('There was an error!', error);
-      });
-    toast.success('Successfully Added to Cart!!');
-  };
+  // const AddtoCart = () => {
+  //   axios
+  //     .post(`${process.env.API_URL}addtocart`, { id: data?.id })
+  //     .then((res) => {
+  //       dispatch({ type: 'ADDTOCART', payload: res.data });
+  //     })
+  //     .catch((error) => {
+  //       console.error('There was an error!', error);
+  //     });
+  //   toast.success('Successfully Added to Cart!!');
+  // };
   useEffect(() => {}, [dispatch]);
   return (
     <>

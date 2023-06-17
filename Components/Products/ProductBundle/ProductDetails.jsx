@@ -12,16 +12,19 @@ import DynamicRating from "../../Element/DynamicRating";
 
 const ProductDetails = ({bundles, singleProduct}) => {
     const [active, setActive] = useState();
+
+    // console.log(singleProduct,"singleProduct")
+
     return (
         <div className='cloth-details-size'>
             {/*<GifComponents />*/}
 
             <div className='details-image-concept'>
-                <h2>{singleProduct && singleProduct[0]?.name}</h2>
+                <h2>{singleProduct?.name}</h2>
             </div>
             <div style={{display:"flex"}}>
             {/*<DynamicRating data={singleProduct[0]?.ratingStars} customeclass={"mb-3"}/>*/}
-            <span style={{marginLeft:"2px"}}>(12 reviews)</span>
+            <span style={{marginLeft:"2px"}}>({singleProduct.reviews_count} reviews)</span>
             </div>
 
             {/*<div className='label-section'>*/}
@@ -48,9 +51,9 @@ const ProductDetails = ({bundles, singleProduct}) => {
             }}>
                 <span><span className="font-light ml-1">By: <Link href="category/samsung">Samsung</Link></span></span>
                 <span><span className="font-light ml-1">Model</span> <span
-                    className="font-bold ml-1"># UN55TU7000FXZA</span></span>
+                    className="font-bold ml-1"># {singleProduct.sku}</span></span>
                 <span><span className="font-light ml-1">Part Number</span> <span
-                    className="font-bold ml-1"># 58422</span></span>
+                    className="font-bold ml-1"># {singleProduct.eclipse_number}</span></span>
 
             </div>
 

@@ -52,7 +52,7 @@ const ShopLeftSidebar = ({data}) => {
     const listGrid = true;
     const bottom = 80;
 
-    // console.log(filterBrands.join(''), 'filterBrands')
+    // console.log(data,"dataa")
     // console.log(shopCategory, 'shopCategory')
     // console.log(shopFilters, 'shopFilters')
     // console.log(filterBrands, 'filterBrands')
@@ -65,7 +65,7 @@ const ShopLeftSidebar = ({data}) => {
             {
                 Object.keys(shopProducts).length !== 0 ?
                     <>
-                        <BreadCrumb parent={shopCategory?.name} title={shopCategory?.name}
+                        <BreadCrumb parent={`Shop / ${shopCategory?.name}`} title={shopCategory?.name}
                                     categoryBanner={shopCategory?.active_children}/>
                         <ShopLeftSidebarContain shopProducts={shopProducts} shopFilters={shopFilters} listGrid={listGrid}/>
                     </>
@@ -74,8 +74,7 @@ const ShopLeftSidebar = ({data}) => {
             }
 
             <ElectronicHurryUp tabSection={data?.specialOffer}/>
-
-            {/*<FlowerSubscribe/>*/}
+            <FlowerSubscribe/>
             {/*<CanvasOffset productData={productData}/>*/}
         </Layout6>
     );

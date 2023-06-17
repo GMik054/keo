@@ -53,7 +53,13 @@ const FilterOptions = ({productData}) => {
             <UncontrolledAccordion
                 defaultOpen={defaultOpenSections}
                 stayOpen>
-                <BrandFilterDropdown productData={productData?.brands}/>
+                {
+                    productData?.brands && <BrandFilterDropdown productData={productData?.brands} title="Brands"/>
+                }
+                {
+                    productData?.categories && <BrandFilterDropdown productData={productData?.categories} title="Categories"/>
+                }
+
                 <ColorFilter productData={productData?.attributes.filter(el => el.title === "Color")[0]}
                              categoryArray={categoryArray} addCategory={addCategory}
                              setCategoryArray={setCategoryArray}/>

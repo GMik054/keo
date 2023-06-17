@@ -11,14 +11,14 @@ import Banner7 from './Banner7';
 
 const ElementCollectionContain = () => {
   const [bannerData, setBannerData] = useState([]);
-  useEffect(() => {
-    const types = ['banner'];
-    types.map((type) => {
-      getAPIData(`${process.env.API_URL}${type}`).then((res) => {
-        type === 'banner' && setBannerData(res?.data);
-      });
-    });
-  }, []);
+  // useEffect(() => {
+  //   const types = ['banner'];
+  //   types.map((type) => {
+  //     getAPIData(`${process.env.API_URL}${type}`).then((res) => {
+  //       type === 'banner' && setBannerData(res?.data);
+  //     });
+  //   });
+  // }, []);
   return (
     <section className='section-b-space'>
       <Container fluid={true}>

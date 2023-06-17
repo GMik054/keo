@@ -264,6 +264,8 @@
         }
 
         .media-body {
+          max-width: 140px;
+          width: 100%;
           margin-left: 15px;
 
           [dir='rtl'] & {
@@ -331,7 +333,8 @@
       .cart-total {
         color: var(--theme-color);
         font-weight: 600;
-        display: none;
+        margin-bottom: 4px;
+        //display: none;
 
         @include mq-max(md) {
           display: flex;

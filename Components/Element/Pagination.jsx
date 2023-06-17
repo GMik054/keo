@@ -40,7 +40,7 @@ const PaginationComp = ({productData, addClass}) => {
     useEffect(() => {
         fetch(`${productData?.path}?json=true&per_page=12&page=${selectPage}${filterBrands?.join('')}${priceRange?.join('')}${filterCategory?.join('')}`)
             .then(res => res.json().then(res => {
-                console.log(priceRange,"price")
+                // console.log(priceRange,"price")
                     if (res?.products?.last_page < selectPage) {
                         setSelectPage(res?.products?.last_page)
                         fetch(`${productData.path}?json=true&per_page=12&page=${res.products.last_page}${filterBrands?.join('')}${priceRange?.join('')}${filterCategory?.join('')}`)
@@ -65,7 +65,7 @@ const PaginationComp = ({productData, addClass}) => {
         fetch(`${productData.path}?json=true&per_page=12&page=${e.selected + 1}`)
             .then(res => res.json().then(res => {
                     setSelectPage(e.selected + 1)
-                    window.scrollTo(0, 100)
+                    window.scrollTo(0, 300)
                     if (filterBrands.length !== 0 || priceRange.length !== 0) {
                         fetch(`${productData.path}?json=true&per_page=12&page=${e.selected + 1}${filterBrands?.join('')}${priceRange?.join('')}${filterCategory?.join('')}`)
                             .then(res => res.json().then(res => {

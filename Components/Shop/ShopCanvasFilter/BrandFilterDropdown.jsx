@@ -2,10 +2,10 @@ import { useRouter } from 'next/router';
 import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AccordionBody, AccordionHeader, AccordionItem, Input, Label } from 'reactstrap';
-import { Brand } from '../../Constant';
+// import { Brand } from '../../Constant';
 import { setFilterBrands } from "../../../ReduxToolkit/Slices/ShopProductsSlice";
 
-const BrandFilterDropdown = ({ productData }) => {
+const BrandFilterDropdown = ({ productData ,title}) => {
     const [brandsArray, setBrandsArray] = useState([]);
     const router = useRouter();
     const dispatch = useDispatch();
@@ -34,7 +34,7 @@ const BrandFilterDropdown = ({ productData }) => {
 
     return (
         <AccordionItem className='category-rating'>
-            <AccordionHeader targetId='1'>{Brand}</AccordionHeader>
+            <AccordionHeader targetId='1'>{title}</AccordionHeader>
             <AccordionBody accordionId='1' className='category-scroll'>
                 <ul className='category-list'>
                     {productData &&
@@ -54,9 +54,9 @@ const BrandFilterDropdown = ({ productData }) => {
                                                 <Label className='form-check-label'>
                                                     {elem.name}
                                                 </Label>
-                                                <p className='font-light'>
-                                                    ({elem?.products_count})
-                                                </p>
+                                                {/*<p className='font-light'>*/}
+                                                {/*    ({elem?.products_count})*/}
+                                                {/*</p>*/}
                                             </div>
                                         </li>
                                     )}

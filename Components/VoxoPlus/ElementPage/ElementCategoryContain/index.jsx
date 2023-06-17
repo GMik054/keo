@@ -8,15 +8,15 @@ import ElemCategory3 from './ElemCategory3';
 const ElementCategoryContain = () => {
   const [bannerData, setBannerData] = useState([]);
   const [categoryBanner, setCategoryBanner] = useState([]);
-  useEffect(() => {
-    const types = ['categorybanner', 'banner'];
-    types.map((type) => {
-      getAPIData(`${process.env.API_URL}${type}`).then((res) => {
-        type === 'categorybanner' && setCategoryBanner(res?.data);
-        type === 'banner' && setBannerData(res?.data);
-      });
-    });
-  }, []);
+  // useEffect(() => {
+  //   const types = ['categorybanner', 'banner'];
+  //   types.map((type) => {
+  //     getAPIData(`${process.env.API_URL}${type}`).then((res) => {
+  //       type === 'categorybanner' && setCategoryBanner(res?.data);
+  //       type === 'banner' && setBannerData(res?.data);
+  //     });
+  //   });
+  // }, []);
   const FreshFilter = bannerData.filter((el) => el.subtype === 'vegetablesfreshfruits');
   const ShoesFilter = categoryBanner.filter((el) => el.type === 'shoes');
   return (

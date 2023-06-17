@@ -7,18 +7,18 @@ import ProductWishListAction from './ProductWishListAction';
 
 const ProductActions = ({ singleProduct }) => {
   const dispatch = useDispatch();
-  const AddtoCart = () => {
-    axios
-      .post(`${process.env.API_URL}addtocart`, { id: singleProduct ? singleProduct[0]?.id : 1 })
-      .then((res) => {
-        dispatch({ type: 'ADDTOCART', payload: res.data });
-      })
-      .catch((error) => {
-        console.error('There was an error!', error);
-      });
-    dispatch({ type: 'NOTIFICATIONALTER', payload: singleProduct ? singleProduct : 1, value: true });
-    toast.success('Item Added');
-  };
+  // const AddtoCart = () => {
+  //   axios
+  //     .post(`${process.env.API_URL}addtocart`, { id: singleProduct ? singleProduct[0]?.id : 1 })
+  //     .then((res) => {
+  //       dispatch({ type: 'ADDTOCART', payload: res.data });
+  //     })
+  //     .catch((error) => {
+  //       console.error('There was an error!', error);
+  //     });
+  //   dispatch({ type: 'NOTIFICATIONALTER', payload: singleProduct ? singleProduct : 1, value: true });
+  //   toast.success('Item Added');
+  // };
   useEffect(() => { }, [dispatch]);
   return (
     <>
