@@ -197,7 +197,7 @@ const ProductCart = () => {
                                                             Number(sellTotal) !== 0 &&
                                                             <span className="fw-normal red-font-size"
                                                                   style={{color: "var(--theme-color)"}}>You Save ${Math.round(Number(sellTotal) - (Number(total)))}</span>
-                                                        }npm run dev
+                                                        }
                                                         <span className="fw-bold" style={{
                                                             display: "flex",
                                                             justifyContent: "end",
