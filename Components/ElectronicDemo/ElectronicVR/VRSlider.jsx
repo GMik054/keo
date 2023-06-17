@@ -21,6 +21,7 @@ const VRSliders = ({FilterVrProduct, padding, paddingBottomm}) => {
         >
             <Slider {...VRSlider}>
                 {FilterVrProduct.map((elem, i) => {
+                    // console.log(elem,"ELEM")
                     // console.log(elem, "elem")
                     // let count = 0;
                     // let sum = elem.reviews.reduce(function (sum, item, index) {
@@ -41,13 +42,10 @@ const VRSliders = ({FilterVrProduct, padding, paddingBottomm}) => {
                                             {/*  <i className='far fa-heart'></i>*/}
                                             {/*</Link>*/}
                                         </div>
-                                        <Link href={'/product/product_left_sidebar/35'} className='text-center'>
-                                            {/*{elem.images.map((item, i) => {*/}
-                                            {/*    return */}
+                                        {/*<Link href={'/product/product_left_sidebar/35'} className='text-center'>*/}
                                             <img src={`${APICallUrl}/storage/${elem.image}`} className='img-fluid'
                                                  alt='product' key={i}/>
-                                            {/*})}*/}
-                                        </Link>
+                                        {/*</Link>*/}
                                     </div>
                                     <div className='product-details'>
                                         <a href='#javascript' className='font-default'>

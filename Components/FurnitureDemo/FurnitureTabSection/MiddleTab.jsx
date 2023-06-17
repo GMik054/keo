@@ -24,9 +24,9 @@ const MiddleTab = ({ elem, TabMiddleColor, LeftRightTab }) => {
                   {/*<span className='label label-black'>{elem.lefttag}</span>*/}
                   {/*<span className='label label-theme'>{elem.righttag}</span>*/}
                 </div>
-                <Link href={'/product/product_left_sidebar/21'}>
+                {/*<Link href={'/product/product_left_sidebar/21'}>*/}
                   <img src={`${APICallUrl}/${elem?.image}`} className='img-fluid' alt='furniture' />
-                </Link>
+                {/*</Link>*/}
                 {/*<div className={`${TabMiddleColor ? TabMiddleColor : 'offer-end offer-end-demo4'}`}>*/}
                 {/*  <h3>{elem.heading}</h3>*/}
                 {/*  <h6>{elem.subheading}</h6>*/}

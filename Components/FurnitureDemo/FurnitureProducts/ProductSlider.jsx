@@ -49,9 +49,9 @@ const ProductSlider = ({ productData }) => {
               <div className='product-style-3 product-style-chair'>
                 <div className='product-title d-block mb-0'>
                   <p className='font-light mb-sm-2 mb-0'>{elem.feature}</p>
-                  <Link href={`/product/product_left_sidebar/${elem.id}`} className='font-default'>
+                  {/*<Link href={`/product/product_left_sidebar/${elem.id}`} className='font-default'>*/}
                     <h5>{elem.name}</h5>
-                  </Link>
+                  {/*</Link>*/}
                 </div>
                 <div className='main-price'>
                   <DynamicRating data={elem.ratingStars} customeclass={'mb-1 mt-0'} />

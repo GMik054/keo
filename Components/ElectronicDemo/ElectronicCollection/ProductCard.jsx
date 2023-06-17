@@ -32,11 +32,11 @@ const ProductCard = ({ ProductFilter }) => {
                 <div>
                   <div className='product-box'>
                     <div className='img-wrapper'>
-                      <Link href={`/product/product_left_sidebar/${elem.id}`}>
-                        {elem.images.map((item) => {
-                          return <Img src={`${CommonPath}/${item.src}`} className='bg-img' alt='blog_category' key={i} />;
-                        })}
-                      </Link>
+                      {/*<Link href={`/product/product_left_sidebar/${elem.id}`}>*/}
+                      {/*  {elem.images.map((item) => {*/}
+                      {/*    return <Img src={`${CommonPath}/${item.src}`} className='bg-img' alt='blog_category' key={i} />;*/}
+                      {/*  })}*/}
+                      {/*</Link>*/}
                       {elem.discount > 0 && (
                         <div className='label-block'>
                           <span className='label label-black'>{NEW}</span>
@@ -63,9 +63,9 @@ const ProductCard = ({ ProductFilter }) => {
                           {(elem.mrp * currencyValue).toFixed(2)}
                         </span>
                       </h3>
-                      <Link href={`/product/product_left_sidebar/${elem.id}`} className='font-default fw-6-1'>
+                      {/*<Link href={`/product/product_left_sidebar/${elem.id}`} className='font-default fw-6-1'>*/}
                         <h5>{elem.name}</h5>
-                      </Link>
+                      {/*</Link>*/}
                       <DynamicRating data={elem.ratingStars} />
                     </div>
                   </div>

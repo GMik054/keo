@@ -20,11 +20,11 @@ const SliderProductCard = ({ ShoesFilterProduct }) => {
             <div key={i}>
               <div className='product-box'>
                 <div className='img-wrapper'>
-                  <Link href={`/product/product_left_sidebar/${elem.id}`}>
-                    {elem.images.map((item, i) => {
-                      return <img src={`${CommonPath}/${item.src}`} className='bg-img img-fluid' alt='shoes' key={i} />;
-                    })}
-                  </Link>
+                  {/*<Link href={`/product/product_left_sidebar/${elem.id}`}>*/}
+                  {/*  {elem.images.map((item, i) => {*/}
+                  {/*    return <img src={`${CommonPath}/${item.src}`} className='bg-img img-fluid' alt='shoes' key={i} />;*/}
+                  {/*  })}*/}
+                  {/*</Link>*/}
                   <div className='label-block'>
                     {elem.new && <span className='label label-black'>{NEW}</span>}
                     {elem.discount > 0 && (
@@ -51,9 +51,9 @@ const SliderProductCard = ({ ShoesFilterProduct }) => {
                       {(elem.mrp * currencyValue).toFixed(2)}
                     </span>
                   </h3>
-                  <Link href={`/product/product_left_sidebar/${elem.id}`} className='font-default'>
+                  {/*<Link href={`/product/product_left_sidebar/${elem.id}`} className='font-default'>*/}
                     <h5>{elem.name}</h5>
-                  </Link>
+                  {/*</Link>*/}
                   <DynamicRating data={elem.ratingStars} customeclass={'mt-1'} />
                 </div>
               </div>

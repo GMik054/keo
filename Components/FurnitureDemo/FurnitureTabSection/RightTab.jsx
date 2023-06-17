@@ -22,9 +22,9 @@ const RightTab = ({ elem, LeftRightTab }) => {
               return (
                 <div className={`${LeftRightTab ? LeftRightTab : 'product-box product-box1'}`} key={i}>
                   <div className='img-wrapper bg-transparent'>
-                    <Link href={'/product/product_left_sidebar/21'} className='text-center'>
+                    {/*<Link href={'/product/product_left_sidebar/21'} className='text-center'>*/}
                       <img src={`${APICallUrl}/${item.image}`} className='img-fluid' alt='products' />
-                    </Link>
+                    {/*</Link>*/}
                   </div>
                   <div className='product-details'>
                     <h3 className='theme-color'>
@@ -33,9 +33,9 @@ const RightTab = ({ elem, LeftRightTab }) => {
                         {/*{(item.price * currencyValue).toFixed(2)}*/}
 
                     </h3>
-                    <Link href={'/product/product_left_sidebar/25'} className='font-default'>
+                    {/*<Link href={'/product/product_left_sidebar/25'} className='font-default'>*/}
                       <h5>{item.name}</h5>
-                    </Link>
+                    {/*</Link>*/}
                     <DynamicRating data={Math.round(sum / count)} />
                   </div>
                 </div>

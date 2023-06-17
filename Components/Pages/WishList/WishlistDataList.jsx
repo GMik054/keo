@@ -24,11 +24,11 @@ const WishlistDataList = ({ wishlistData }) => {
             return (
               <tr key={elem.id}>
                 <td>
-                  <Link href={`/product/product_left_sidebar/${elem.id}`}>
-                    {elem?.images?.slice(0, 1).map((item, i) => (
-                      <img src={`${CommonPath}/${item.src}`} alt='product' key={i} />
-                    ))}
-                  </Link>
+                  {/*<Link href={`/product/product_left_sidebar/${elem.id}`}>*/}
+                  {/*  {elem?.images?.slice(0, 1).map((item, i) => (*/}
+                  {/*    <img src={`${CommonPath}/${item.src}`} alt='product' key={i} />*/}
+                  {/*  ))}*/}
+                  {/*</Link>*/}
                 </td>
                 <MobileViewData elem={elem} />
                 <td>

@@ -20,11 +20,11 @@ const LatestSlider = ({ productData }) => {
             <div key={i}>
               <div className='product-box'>
                 <div className='img-wrapper'>
-                  <Link href={`/product/product_left_sidebar/${elem.id}`}>
-                    {elem.images.map((el, i) => {
-                      return <Img src={`${CommonPath}/${el.src}`} className='img-fluid bg-img' alt='furniture' key={i} />;
-                    })}
-                  </Link>
+                  {/*<Link href={`/product/product_left_sidebar/${elem.id}`}>*/}
+                  {/*  {elem.images.map((el, i) => {*/}
+                  {/*    return <Img src={`${CommonPath}/${el.src}`} className='img-fluid bg-img' alt='furniture' key={i} />;*/}
+                  {/*  })}*/}
+                  {/*</Link>*/}
                   <div className='label-block'>
                     <span className='label label-black'>{NEW}</span>
                     <span className='label label-theme'>
@@ -47,9 +47,9 @@ const LatestSlider = ({ productData }) => {
                       <span className='font-light ml-1'> ${elem.mrp}.00</span>
                     </h3>
                   )}
-                  <Link href={`/product/product_left_sidebar/${elem.id}`} className='font-default'>
+                  {/*<Link href={`/product/product_left_sidebar/${elem.id}`} className='font-default'>*/}
                     <h5>{elem.name}</h5>
-                  </Link>
+                  {/*</Link>*/}
                   <DynamicRating data={elem.ratingStars} />
                 </div>
               </div>

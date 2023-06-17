@@ -19,9 +19,9 @@ const MostPopularCard = ({ productData }) => {
                 </a>
                 <div className='product-details'>
                   <h6 className='font-light'>{elem.feature}</h6>
-                  <Link href={`/product/product_left_sidebar/${elem.id}`}>
+                  {/*<Link href={`/product/product_left_sidebar/${elem.id}`}>*/}
                     <h3>{elem.name}</h3>
-                  </Link>
+                  {/*</Link>*/}
                   <h4 className='font-light mt-1'>
                     <del>${elem.price}.00</del> <span className='theme-color'>${elem.mrp}.50</span>
                   </h4>

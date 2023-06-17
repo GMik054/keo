@@ -24,10 +24,10 @@ const LeftTab = ({elem, LeftRightTab}) => {
                         return (
                             <div className={`${LeftRightTab ? LeftRightTab : 'product-box product-box1'}`} key={i}>
                                 <div className='img-wrapper bg-transparent'>
-                                    <Link href={'/product/product_left_sidebar/21'} className='text-center'>
+                                    {/*<Link href={'/product/product_left_sidebar/21'} className='text-center'>*/}
                                         <img src={`${APICallUrl}/storage/${result.image}`} className='img-fluid'
                                              alt='furniture'/>
-                                    </Link>
+                                    {/*</Link>*/}
                                     <div className='circle-shape'></div>
                                 </div>
                                 <div className='product-details'>
@@ -35,10 +35,10 @@ const LeftTab = ({elem, LeftRightTab}) => {
                                         {symbol}{result?.front_sale_price !==null || undefined ?result?.front_sale_price.toFixed(2):result?.price}
                                         {result?.front_sale_price !==null || undefined ?  <span className='font-light ms-2'>{symbol}{result?.price.toFixed(2)}</span>:""}
                                     </h3>
-                                    <Link href={'/product/product_left_sidebar/21'} className='font-default'>
+                                    {/*<Link href={'/product/product_left_sidebar/21'} className='font-default'>*/}
                                         <h5>{result.name}</h5>
-                                    </Link>
-
+                                    {/*</Link>*/}
+                                    {/**/}
                                     <DynamicRating data={Math.round(sum / count)}/>
                                 </div>
                             </div>

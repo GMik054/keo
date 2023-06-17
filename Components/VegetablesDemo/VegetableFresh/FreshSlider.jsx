@@ -22,11 +22,11 @@ const FreshSlider = ({ FreshFilter }) => {
             <div key={i}>
               <div className='product-box'>
                 <div className='img-wrapper hover-image'>
-                  <Link href={`/product/product_left_sidebar/${elem.id}`}>
-                    {elem.images.map((item, i) => {
-                      return <Img src={`${CommonPath}/${item.src}`} className='img-fluid bg-img' alt='vegetable' key={i} />;
-                    })}
-                  </Link>
+                  {/*<Link href={`/product/product_left_sidebar/${elem.id}`}>*/}
+                  {/*  {elem.images.map((item, i) => {*/}
+                  {/*    return <Img src={`${CommonPath}/${item.src}`} className='img-fluid bg-img' alt='vegetable' key={i} />;*/}
+                  {/*  })}*/}
+                  {/*</Link>*/}
                   <div className='label-block'>
                     {elem.new && <span className='label label-black'>{NEW}</span>}
                     {elem.discount > 0 && (
@@ -53,9 +53,9 @@ const FreshSlider = ({ FreshFilter }) => {
                       {(elem.mrp * currencyValue).toFixed(2)}
                     </span>
                   </h3>
-                  <Link href={`/product/product_left_sidebar/${elem.id}`} className='font-default'>
+                  {/*<Link href={`/product/product_left_sidebar/${elem.id}`} className='font-default'>*/}
                     <h5>{elem.name}</h5>
-                  </Link>
+                  {/*</Link>*/}
                   <ul className='size-box'>
                     <li>{elem.quantity_1}</li>
                     {elem.quantity_2 && <li>{elem.quantity_2}</li>}

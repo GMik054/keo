@@ -61,9 +61,9 @@ const AllProductInfinite = ({ productData, num }) => {
                             <DynamicRating customeclass={'mt-0'} data={elem.ratingStars} />
                           </div>
                           <div className='main-price'>
-                            <Link href={`/product/product_left_sidebar/${elem.id}`} className='font-default'>
+                            {/*<Link href={`/product/product_left_sidebar/${elem.id}`} className='font-default'>*/}
                               <h5 className='ms-0'>{elem.name}</h5>
-                            </Link>
+                            {/*</Link>*/}
                             <div className='listing-content'>
                               <span className='font-light'>{elem.size}</span>
                               <p className='font-light'>{elem.description}</p>

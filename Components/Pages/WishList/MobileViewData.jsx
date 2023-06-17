@@ -7,9 +7,9 @@ const MobileViewData = ({ elem }) => {
   const { symbol, currencyValue } = useSelector((state) => state.CurrencyReducer);
   return (
     <td>
-      <Link href={`/product/product_left_sidebar/${elem.id}`} className='font-light'>
+      {/*<Link href={`/product/product_left_sidebar/${elem.id}`} className='font-light'>*/}
         {elem.name}
-      </Link>
+      {/*</Link>*/}
       <Row className='mobile-cart-content'>
         <div className='col'>
           <p>{elem.inStock > 0 ? 'In Stock' : 'Out of Stock'}</p>

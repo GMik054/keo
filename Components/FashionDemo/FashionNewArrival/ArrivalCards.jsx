@@ -55,9 +55,9 @@ const ArrivalCards = ({ productData }) => {
                         <DynamicRating data={elem.ratingStars} customeclass={'mt-0'} />
                       </div>
                       <div className='main-price'>
-                        <Link href={`/product/product_left_sidebar/${elem.id}`} className='font-default'>
+                        {/*<Link href={`/product/product_left_sidebar/${elem.id}`} className='font-default'>*/}
                           <h5>{elem.name}</h5>
-                        </Link>
+                        {/*</Link>*/}
                         <h3 className='theme-color'>
                           {symbol} {(elem.price * currencyValue).toFixed(2)}
                         </h3>

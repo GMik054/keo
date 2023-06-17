@@ -76,16 +76,16 @@ const ModalProductDetails = ({ data }) => {
         )}
         <div className='product-btns'>
           <AddtoCartBtn customeclass='btn btn-solid-default btn-sm' data={data} />
-          <Link
-            href={`/product/product_left_sidebar/${data?.id}`}
-            className='btn btn-solid-default btn-sm'
-            onClick={() =>
-              dispatch({
-                type: 'IS_MODAL',
-              })
-            }>
-            {Viewdetails}
-          </Link>
+          {/*<Link*/}
+          {/*  href={`/product/product_left_sidebar/${data?.id}`}*/}
+          {/*  className='btn btn-solid-default btn-sm'*/}
+          {/*  onClick={() =>*/}
+          {/*    dispatch({*/}
+          {/*      type: 'IS_MODAL',*/}
+          {/*    })*/}
+          {/*  }>*/}
+          {/*  {Viewdetails}*/}
+          {/*</Link>*/}
         </div>
       </div>
     </Col>

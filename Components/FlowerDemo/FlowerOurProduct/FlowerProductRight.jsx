@@ -49,9 +49,9 @@ const FlowerProductRight = ({ productData }) => {
                     ${elem.price}.00
                     <span className='font-light ml-1'>${elem.mrp}.00</span>
                   </h3>
-                  <Link href={`/product/product_left_sidebar/${elem.id}`} className='font-default'>
+                  {/*<Link href={`/product/product_left_sidebar/${elem.id}`} className='font-default'>*/}
                     <h5>{elem.name}</h5>
-                  </Link>
+                  {/*</Link>*/}
                   <DynamicRating data={elem.ratingStars} />
                 </div>
               </div>

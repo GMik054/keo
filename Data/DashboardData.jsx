@@ -29,9 +29,9 @@ export const headDashboardColumn = [
 export const headDashboardData = [
   {
     image: (
-      <Link href={'/product/product_left_sidebar/1'}>
+      // <Link href={'/product/product_left_sidebar/1'}>
         <img src='/assets/images/fashion/product/front/1.jpg' alt='fashion' height={70} />
-      </Link>
+      // </Link>
     ),
     order: <p className='mt-0'>#4545774</p>,
     product: <p className='fs-6 m-0'>Men's Sweatshirt</p>,
@@ -45,9 +45,9 @@ export const headDashboardData = [
   },
   {
     image: (
-      <Link href={'/product/product_left_sidebar/2'}>
+      // <Link href={'/product/product_left_sidebar/2'}>
         <img src='/assets/images/fashion/product/front/2.jpg' alt='fashion' height={70} />
-      </Link>
+      // </Link>
     ),
     order: <p className='mt-0'>#757545</p>,
     product: <p className='fs-6 m-0'>Outwear & Coats</p>,
@@ -61,9 +61,9 @@ export const headDashboardData = [
   },
   {
     image: (
-      <Link href={'/product/product_left_sidebar/3'}>
+      // <Link href={'/product/product_left_sidebar/3'}>
         <img src='/assets/images/fashion/product/front/3.jpg' alt='fashion' height={70} />
-      </Link>
+      // </Link>
     ),
     order: <p className='mt-0'>#45575</p>,
     product: <p className='fs-6 m-0'>Outwear & Coats</p>,
@@ -77,9 +77,9 @@ export const headDashboardData = [
   },
   {
     image: (
-      <Link href={'/product/product_left_sidebar/4'}>
+      // <Link href={'/product/product_left_sidebar/4'}>
         <img src='/assets/images/fashion/product/front/4.jpg' alt='fashion' height={70} />
-      </Link>
+      // </Link>
     ),
     order: <p className='mt-0'>#754575</p>,
     product: <p className='fs-6 m-0'>Men's Hoodie T-Shirt</p>,
@@ -93,9 +93,9 @@ export const headDashboardData = [
   },
   {
     image: (
-      <Link href={'/product/product_left_sidebar/5'}>
+      // <Link href={'/product/product_left_sidebar/5'}>
         <img src='/assets/images/fashion/product/front/5.jpg' alt='fashion' height={70} />
-      </Link>
+      // </Link>
     ),
     order: <p className='mt-0'>#55575</p>,
     product: <p className='fs-6 m-0'>Men's Sweatshirt</p>,

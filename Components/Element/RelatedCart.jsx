@@ -34,9 +34,9 @@ const RelatedCartProduct = ({ addedCartData }) => {
                         <div className='product-box'>
                           <div className='img-wrapper'>
                             <div className='front'>
-                              <Link href={`/product/product_left_sidebar/${elem.id}`}>
-                                <Img src={`${CommonPath}/${elem?.images[0]?.src}`} className='bg-img' alt='product-box' />
-                              </Link>
+                              {/*<Link href={`/product/product_left_sidebar/${elem.id}`}>*/}
+                              {/*  <Img src={`${CommonPath}/${elem?.images[0]?.src}`} className='bg-img' alt='product-box' />*/}
+                              {/*</Link>*/}
                             </div>
                           </div>
                           <div className='product-details text-center'>

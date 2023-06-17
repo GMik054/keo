@@ -43,9 +43,9 @@ const ShoesSliderCard = ({ SliderFilter }) => {
                       {(elem.mrp * currencyValue).toFixed(2)}
                     </span>
                   </h3>
-                  <Link href={`/product/product_left_sidebar/${elem.id}`} className='font-default'>
+                  {/*<Link href={`/product/product_left_sidebar/${elem.id}`} className='font-default'>*/}
                     <h5>{elem.name}</h5>
-                  </Link>
+                  {/*</Link>*/}
                   <DynamicRating data={elem.ratingStars} customeclass={'mt-1'} />
                 </div>
               </div>

@@ -19,15 +19,15 @@ const NewProductCard = ({ productData }) => {
           <Col xl="3" lg="4" xs="6" key={i}>
             <div className="product-box">
               <div className="img-wrapper">
-                {elem.images.slice(0, 2).map((item, i) => {
-                  return (
-                    <div className={`${item.class}`} key={i}>
-                      <Link href={`/product/product_left_sidebar/${elem.id}`}>
-                        <Img src={`${CommonPath}/${item.src}`} className="bg-img" alt="product" />
-                      </Link>
-                    </div>
-                  );
-                })}
+                {/*{elem.images.slice(0, 2).map((item, i) => {*/}
+                {/*  return (*/}
+                {/*    <div className={`${item.class}`} key={i}>*/}
+                {/*      <Link href={`/product/product_left_sidebar/${elem.id}`}>*/}
+                {/*        <Img src={`${CommonPath}/${item.src}`} className="bg-img" alt="product" />*/}
+                {/*      </Link>*/}
+                {/*    </div>*/}
+                {/*  );*/}
+                {/*})}*/}
                 <div className="label-block">
                   <span className="label label-black">{NEW}</span>
                   {elem.discount > 0 ? (
@@ -53,9 +53,9 @@ const NewProductCard = ({ productData }) => {
                   <DynamicRating data={elem.ratingStars} />
                 </div>
                 <div className="main-price">
-                  <Link href={`/product/product_left_sidebar/${elem.id}`} className="font-default">
+                  {/*<Link href={`/product/product_left_sidebar/${elem.id}`} className="font-default">*/}
                     <h5>{elem.name}</h5>
-                  </Link>
+                  {/*</Link>*/}
                   <div className="listing-content">
                     <span className="font-light">{elem.category}</span>
                     <p className="font-light">{elem.description}</p>
