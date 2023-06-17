@@ -24,7 +24,7 @@ const ProductDetails = ({bundles, singleProduct}) => {
             </div>
             <div style={{display:"flex"}}>
             {/*<DynamicRating data={singleProduct[0]?.ratingStars} customeclass={"mb-3"}/>*/}
-            <span style={{marginLeft:"2px"}}>({singleProduct.reviews_count} reviews)</span>
+            <span style={{marginLeft:"2px"}}>({singleProduct?.reviews_count} reviews)</span>
             </div>
 
             {/*<div className='label-section'>*/}
