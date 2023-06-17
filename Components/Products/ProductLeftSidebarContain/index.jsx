@@ -2,8 +2,8 @@ import React from 'react';
 import { Container, Row } from 'reactstrap';
 import DetainTabSection from '../Common/DetailTabsection';
 import NotificationModal from '../Common/NotificationModal';
-import LeftsideContain from './LeftsideContain';
-import RightsideContain from './RightsideContain';
+import LeftSideContain from './LeftsideContain';
+import RightSideContain from './RightsideContain';
 
 const ProductLeftSidebarContain = ({ productData }) => {
   return (
@@ -11,8 +11,8 @@ const ProductLeftSidebarContain = ({ productData }) => {
       <section>
         <Container>
           <Row className='gx-4 gy-5'>
-            <LeftsideContain productData={productData} />
-            <RightsideContain />
+            <LeftSideContain productData={productData} />
+            <RightSideContain />
             <DetainTabSection />
           </Row>
         </Container>

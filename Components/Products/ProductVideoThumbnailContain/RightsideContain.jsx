@@ -4,7 +4,7 @@ import AutoFadeSliderStatic from '../Common/AutoFadeSliderStatic';
 import ProductDetailStatic from '../Product4ImageContain/ProductDetailStatic';
 import ProductFilterButton from './ProductFilterButton';
 
-const RightsideContain = ({ VideoPlay }) => {
+const RightSideContain = ({ VideoPlay }) => {
   return (
     <Col lg='9' xs='12'>
       <ProductFilterButton />
@@ -23,4 +23,4 @@ const RightsideContain = ({ VideoPlay }) => {
   );
 };
 
-export default RightsideContain;
+export default RightSideContain;

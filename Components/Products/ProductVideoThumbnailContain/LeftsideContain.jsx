@@ -6,7 +6,7 @@ import { Close } from '../../Constant';
 import BrandFilterDropdown from '../../Shop/ShopCanvasFilter/BrandFilterDropdown';
 import CustomerServices from './CustomerServices';
 
-const LeftsideContain = ({ productData }) => {
+const LeftSideContain = ({ productData }) => {
   const [open, setOpen] = useState('1');
   const toggle = (id) => {
     if (open === id) {
@@ -33,4 +33,4 @@ const LeftsideContain = ({ productData }) => {
   );
 };
 
-export default LeftsideContain;
+export default LeftSideContain;
