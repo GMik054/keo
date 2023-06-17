@@ -9,7 +9,7 @@ import RecentNotification from '../../../Components/Products/RecentNotification'
 import StickyFooter from '../../../Components/Products/StickyFooter';
 import Layout1 from '../../../Layout/Layout1';
 import { getAPIData } from '../../../Utils';
-import ShopLeftSidebar from "../../shop/[id]";
+// import ShopLeftSidebar from "../../shop/[id]";
 // import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 // export const getStaticProps = async ({ locale }) => ({ props: { ...(await serverSideTranslations(locale, ['common'])) } });
 

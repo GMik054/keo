@@ -51,7 +51,7 @@ const LeftSideContain = ({productData, singleProduct}) => {
     const handleQuantityChange = (e) => {
         const value = parseInt(e.target.value);
         const minValue = 1;
-        const maxValue = singleProduct.quantity;
+        const maxValue = singleProduct?.quantity;
 
         // Check if the value is a number
         if (!isNaN(value)) {
@@ -77,11 +77,11 @@ const LeftSideContain = ({productData, singleProduct}) => {
 
                         </h2>
                         <div style={{display: 'flex', alignItems: "center"}}>
-                            <span className="dot" style={singleProduct.quantity > 0 ? {} : {
+                            <span className="dot" style={singleProduct?.quantity > 0 ? {} : {
                                 backgroundColor: "var(--theme-color)",
                                 outline: " 0.1rem solid var(--theme-color)"
                             }}></span><h3
-                            style={{color: "black"}}>{singleProduct.quantity > 0 ? "In stock" : "Out of stock"}</h3>
+                            style={{color: "black"}}>{singleProduct?.quantity > 0 ? "In stock" : "Out of stock"}</h3>
                         </div>
                     </div>
                     <div className="product-checkout-section">
@@ -99,11 +99,11 @@ const LeftSideContain = ({productData, singleProduct}) => {
                     </div>
 
                     {
-                        singleProduct.quantity > 0 &&
+                        singleProduct?.quantity > 0 &&
                         <>
                             {
-                                count === singleProduct.quantity &&
-                                <p style={{color: "var(--theme-color)"}}>There are {singleProduct.quantity} items in
+                                count === singleProduct?.quantity &&
+                                <p style={{color: "var(--theme-color)"}}>There are {singleProduct?.quantity} items in
                                     stock.</p>
                             }
                             <div id='selectSize' className='addeffect-section product-description border-product'
@@ -126,7 +126,7 @@ const LeftSideContain = ({productData, singleProduct}) => {
           </span>
                                         <Input type='text' name='quantity'
                                                className='form-control input-number'
-                                               min={1} max={singleProduct.quantity}
+                                               min={1} max={singleProduct?.quantity}
                                                value={count}
                                                onChange={handleQuantityChange}
                                         />
@@ -136,7 +136,7 @@ const LeftSideContain = ({productData, singleProduct}) => {
                     type: 'button',
                     className: 'quantity-right-plus btn-left-0',
                     onClick: () => {
-                        setCount((prev) => (prev < singleProduct.quantity ? count + 1 : singleProduct.quantity));
+                        setCount((prev) => (prev < singleProduct?.quantity ? count + 1 : singleProduct?.quantity));
                     },
                 }}>
               <i className='fas fa-plus'></i>
