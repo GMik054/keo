@@ -1,31 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import {Col, Container, Row} from 'reactstrap';
+import React from 'react';
+import {Container, Row} from 'reactstrap';
 import DetainTabSection from '../Common/DetailTabsection';
-// import LeftSideContain from '../ProductLeftSidebarContain/LeftSideContain';
-import RightSideContain from '../ProductLeftSidebarContain/RightSideContain';
-import {getAPIData} from "../../../Utils";
 import {useRouter} from "next/router";
-import ElectronicVR from "../../ElectronicDemo/ElectronicVR";
-import SectionHeader from "../../Element/SectionHeader";
-import {NewArrival} from "../../Constant";
 import VRSliders from "../../ElectronicDemo/ElectronicVR/VRSlider";
+import RightSideContain from "../ProductLeftSidebarContain/RightsideContain";
 import LeftSideContain from "../ProductLeftSidebarContain/LeftsideContain";
 
 const ProductRightSidebarContain = ({singleProduct}) => {
-    const router = useRouter();
-    const {id} = router.query;
-    // const [singleProduct, setSingleProduct] = useState([]);
-    // const FilterVrProduct = productData.filter((el) => el.type === "electronic")
-
-    // useEffect(() => {
-    //     const types = ['product'];
-    //     types.map((type) => {
-    //         getAPIData(`${process.env.API_URL}${type}/${id ? id : 1}`).then((res) => {
-    //             type === 'product' && setSingleProduct(res?.data);
-    //         });
-    //     });
-    // }, [router]);
-    // console.log(singleProduct?.product, "DDDDDDDDD")
 
     return (
 
