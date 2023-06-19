@@ -3,7 +3,7 @@ import React, {useEffect} from 'react';
 import Head from 'next/head';
 import {Provider} from 'react-redux';
 import {appWithTranslation} from 'next-i18next';
-import {ToastContainer, toast} from 'react-toastify';
+import {ToastContainer} from 'react-toastify';
 import {useRouter} from 'next/router';
 import CartSuccessModal from '../Components/Element/CartSuccessModal';
 import CommonMobileView from '../Components/Element/CommonMobileView';
@@ -16,7 +16,6 @@ import YoutubeModal from '../Components/FashionDemo/YoutubeModal';
 import DeleteModal from '../Components/Pages/UserDashboard/DeleteModal';
 import ConfirmDeleteModal from '../Components/Pages/UserDashboard/ConfirmDeleteModal';
 import CopyConfigModal from '../Layout/Common/Customizer/CopyConfigModal';
-import {APICallUrl} from "../Components/Constant";
 
 function MyApp({Component, pageProps}) {
 

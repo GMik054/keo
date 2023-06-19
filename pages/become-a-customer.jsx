@@ -1,25 +1,24 @@
-import React, {useEffect, useState} from 'react';
-import {getAPIData} from "../Utils";
-import Layout6 from "../Layout/Layout6";
-import Head from "next/head";
+import Head from 'next/head';
+import React from 'react';
 import BecomeCustomer from "../Components/Pages/BecomeCustomer";
 import FlowerSubscribe from "../Components/FlowerDemo/FlowerSubscribe";
-import About from "../Components/AboutUs";
+import Layout6 from "../Layout/Layout6";
 import {APICallUrl} from "../Components/Constant";
 
-const AboutUs = ({data}) => {
+const BecomeACustomer = ({data}) => {
+
     return (
         <Layout6 mainMenu={data?.mainMenu[0]} data={data}>
             <Head>
                 <meta name='viewport' content='width=device-width, initial-scale=1'/>
                 <link rel='icon' type='image/x-icon' href={`/assets/svg/koalogo.png`}/>
             </Head>
-            <About/>
-            {/*<BecomeCustomer/>*/}
+            <BecomeCustomer/>
             <FlowerSubscribe/>
         </Layout6>
     );
 };
+
 
 export async function getServerSideProps() {
     const mainMenu = await fetch(`${APICallUrl}/api/main-menu?slug=main-menu`);
@@ -34,8 +33,9 @@ export async function getServerSideProps() {
         footerCenter: await footerCenter?.json(),
         footerRight: await footerRight?.json(),
 
+
     }
     return {props: {data}}
 }
 
-export default AboutUs;
+export default BecomeACustomer;

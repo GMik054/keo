@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Col, Form, Input, Label, Row} from 'reactstrap';
 import {useForm} from 'react-hook-form';
 import {
     Address,
     Address2,
     address2required,
-    addressrequired,
+    addressrequired, APICallUrl,
     Continuecheckout,
     Emailaddress,
     emailrequired,
@@ -25,6 +25,7 @@ import {Btn} from '../../AbstractElements';
 import PaymantMode from './PaymantMode';
 import * as Yup from 'yup'
 import {useFormik} from "formik";
+import {setCart} from "../../../ReduxToolkit/Slices/CartSlice";
 
 const CheckoutForm = ({info}) => {
     // const [isFormData, setIsFormData] = useState('');
@@ -37,23 +38,21 @@ const CheckoutForm = ({info}) => {
     // setIsFormData(data);
     // };
 
-    console.log(info, "info")
-
+    let [state, setState] = useState([]);
+    let [citi, setCiti] = useState({});
 
     const initialValues = {
-        name: info?.name,
-        lastName: "",
-        email: info?.email,
-        phone: info?.phone,
-        postCode: info?.zip_code === null ? "" : info?.zip_code,
-        street: info?.address,
+        name: info?.name === null || undefined ? "" : info?.name,
+        email: info?.email === null || undefined ? "" : info?.email,
+        phone: info?.phone === null || undefined ? "" : info?.phone,
+        postCode: info?.zip_code === null || undefined ? "" : info?.zip_code,
+        street: info?.address === null || undefined ? "" : info?.address,
         house: ""
         // password: ""
     }
 
     const validationSchema = Yup.object({
         name: Yup.string().required("Required"),
-        lastName: Yup.string().required("Required"),
         email: Yup.string().email("Invalid format").required("Required"),
         phone: Yup.string()
             .matches(
@@ -62,6 +61,7 @@ const CheckoutForm = ({info}) => {
         postCode: Yup.string()
             .matches(/^\d{5}(-\d{4})?$/, "Invalid ZIP code")
             .required("Required"),
+        street: Yup.string().required("Required"),
         house: Yup.string().required("Required")
 
         // password: Yup.string()
@@ -71,58 +71,54 @@ const CheckoutForm = ({info}) => {
 
     const formik = useFormik({
         initialValues,
-        validationSchema
+        validationSchema,
     })
 
-    {/*{...register('firstname', {required: true})} */
+    useEffect(() => {
+        formik.validateForm();
+        fetch(`${APICallUrl}/api/get-states`, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json;charset=UTF-8"
+            },
+        })
+            .then((res) => res.json()).then((res) => {
+            setState(res)
+            setCiti(res?.find((elem) => elem?.abbreviation === info?.state_name))
+        })
+            .catch((error) => {
+                console.error('Failed to get States', error);
+            });
+    }, []);
+
+    function ltrim(str) {
+        if (!str) return str;
+        return str.replace(/^\s+/g, '');
     }
-    console.log(formik, "FFF")
+
+    console.log(info, "info")
+    console.log(citi, "citi")
+
     return (
         <>
             <Form className='needs-validation'
                 // onSubmit={handleSubmit(onSubmit)}
             >
                 <Row className='g-4'>
-                    <Col md='6'>
+                    <Col md='12'>
                         <Label htmlFor='fname' className='form-label required-label'>
-                            {FirstName}
+                            Full Name
                         </Label>
                         <input type='text' className='form-control checkout-form' name='name' id='fname'
-                               placeholder='Enter First Name'
-                               value={formik.values.name}
+                               placeholder='Enter Full Name'
+                               value={ltrim(formik.values.name)}
                                onChange={formik.handleChange}
                                onBlur={formik.handleBlur}
                         />
                         {formik.touched.name && formik.errors.name && (
-                            <span style={{color: 'red'}}>{formik.errors.name}</span>
+                            <span style={{color: 'var(--theme-color)'}}>{formik.errors.name}</span>
                         )}
                     </Col>
-                    <Col md='6'>
-                        <Label htmlFor='lname' className='form-label required-label'>
-                            {LastName}
-                        </Label>
-                        <input type='text' className='form-control checkout-form' name='lastName' id='lname'
-                               placeholder='Enter Last Name'
-                               value={formik.values.lastName}
-                               onChange={formik.handleChange}
-                               onBlur={formik.handleBlur}
-                        />
-                        {formik.touched.lastName && formik.errors.lastName && (
-                            <span style={{color: 'red'}}>{formik.errors.lastName}</span>
-                        )}
-                    </Col>
-                    {/*<Col md='6'>*/}
-                    {/*  <Label htmlFor='lname' className='form-label'>*/}
-                    {/*    {Username}*/}
-                    {/*  </Label>*/}
-                    {/*  <div className='input-group'>*/}
-                    {/*    <span className='input-group-text' id='basic-addon1'>*/}
-                    {/*      @*/}
-                    {/*    </span>*/}
-                    {/*    <input type='text' className='form-control' placeholder='Username' name='username' {...register('username', { required: true })} />*/}
-                    {/*  </div>*/}
-                    {/*  {errors.username && <span style={{ color: 'red' }}>{usernamerequired}</span>}*/}
-                    {/*</Col>*/}
                     <Col md='12'>
                         <Label htmlFor='billing' className='form-label'>
                             Company (optional)
@@ -143,41 +139,42 @@ const CheckoutForm = ({info}) => {
 
                         />
                         {formik.touched.email && formik.errors.email && (
-                            <span style={{color: 'red'}}>{formik.errors.email}</span>
+                            <span style={{color: 'var(--theme-color)'}}>{formik.errors.email}</span>
                         )}
                     </Col>
                     <Col md='6'>
                         <Label htmlFor='phone' className='form-label required-label'>
                             Phone Number
                         </Label>
-                        <input type='text' className='form-control checkout-form' placeholder='Enter your phone number'
+                        <input type='phone' className='form-control checkout-form' placeholder='Enter your phone number'
                                name='phone'
                                value={formik.values.phone}
-                               onChange={formik.handleChange}
+                               onChange={(e) => {
+                                   const phoneNumber = e.target.value.replace(/[^0-9+()-]/g, ''); // Remove non-numeric characters except 0-9, +, ()
+                                   formik.setFieldValue('phone', phoneNumber); // Update the formik value
+                               }}
                                onBlur={formik.handleBlur}
                         />
                         {/*{errors.phone && <span style={{color: 'red'}}>Phone is Required</span>}*/}
                         {formik.touched.phone && formik.errors.phone &&
-                            <span style={{color: 'red'}}>{formik.errors.phone}</span>}
+                            <span style={{color: 'var(--theme-color)'}}>{formik.errors.phone}</span>}
                     </Col>
 
-                    <StateField/>
+                    <StateField state={state} defState={info?.state_name} citi={citi} setCiti={setCiti}/>
                     <Col md='6'>
                         <Label htmlFor='zip' className='form-label required-label'>
                             Postcode
                         </Label>
                         <input type='text' className='form-control checkout-form' id='zip'
-                               placeholder='Enter your postcode'
-                               name='postCode'
+                               placeholder='Enter your postcode' name='postCode'
                                value={formik.values.postCode}
                                onChange={formik.handleChange}
                                onBlur={formik.handleBlur}/>
-                        {/*{errors.zip && <span style={{color: 'red'}}>{ziprequired}</span>}*/}
                         {formik.touched.postCode && formik.errors.postCode &&
-                            <span style={{color: 'red'}}>{formik.errors.postCode}</span>}
+                            <span style={{color: 'var(--theme-color)'}}>{formik.errors.postCode}</span>}
                     </Col>
                     {/*<StateField/>*/}
-                    <CountryField/>
+                    <CountryField cities={citi.cities}/>
                     <Col md='6'>
                         <Label htmlFor='address' className='form-label required-label'>
                             Street Address
@@ -185,45 +182,30 @@ const CheckoutForm = ({info}) => {
                         <input type='text' className='form-control checkout-form' id='address'
                                placeholder='Enter your address'
                                name='street'
-                               value={formik.values.street}
+                               value={ltrim(formik.values.street)}
                                onChange={formik.handleChange}
                                onBlur={formik.handleBlur}
                         />
                         {formik.touched.street && formik.errors.street && (
-                            <span style={{color: 'red'}}>{formik.errors.street}</span>
+                            <span style={{color: 'var(--theme-color)'}}>{formik.errors.street}</span>
                         )}
                     </Col>
-                    {/*<Col md='6'>*/}
-                    {/*  <Label htmlFor='address2' className='form-label'>*/}
-                    {/*    {Address2}*/}
-                    {/*  </Label>*/}
-                    {/*  <input type='text' className='form-control' id='address2' placeholder='1234 Main St' name='address2' {...register('address2', { required: true })} />*/}
-                    {/*  {errors.address2 && <span style={{ color: 'red' }}>{address2required}</span>}*/}
-                    {/*</Col>*/}
                     <Col md='6'>
                         <Label htmlFor='house-number' className='form-label required-label'>
                             House/Flat Number
                         </Label>
                         <input type='text' className='form-control checkout-form' id='address2'
                                placeholder='Enter your house/flat N' name='house'
-                               value={formik.values.house}
+                               value={ltrim(formik.values.house)}
                                onChange={formik.handleChange}
                                onBlur={formik.handleBlur}
                         />
                         {formik.touched.house && formik.errors.house && (
-                            <span style={{color: 'red'}}>{formik.errors.house}</span>
+                            <span style={{color: 'var(--theme-color)'}}>{formik.errors.house}</span>
                         )}
                     </Col>
 
                 </Row>
-                {/*<div className='form-check mt-3 custome-form-check'>*/}
-                {/*  <Input className='checkbox_animated check-it' type='checkbox' id='flexCheckDefault11' />*/}
-                {/*  <Label className='form-check-label checkout-label' htmlFor='flexCheckDefault11'>*/}
-                {/*    {SaveInfo}*/}
-                {/*  </Label>*/}
-                {/*</div>*/}
-                {/*<Btn attrBtn={{ className: 'btn btn-solid-default mt-4' }}>{Continuecheckout}</Btn>*/}
-                {/*<hr className='my-lg-5 my-4' />*/}
             </Form>
             {/*<PaymantMode isFormData={isFormData}/>*/}
         </>

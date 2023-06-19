@@ -124,7 +124,7 @@ const MyAccountMainSection = () => {
                             <Col lg="12">
                                 <div className="account-section-div size-300"
                                      style={{backgroundColor: "#B62427", justifyContent: "space-between"}}>
-                                    <div className="for-size-300">
+                                    <div className="for-size-300 dNone480">
                                         <img src={`${CommonPath}/my-account/3.png`} style={{maxWidth: "70px"}}/>
                                         <div>
                                             <h5 style={{color: "white"}}>Current Balance</h5>
